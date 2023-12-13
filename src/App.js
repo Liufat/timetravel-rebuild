@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage/HomePage";
 import PageNotFound from "./pages/PageNotFound";
 import Member from "./pages/member/Member";
@@ -8,13 +8,16 @@ import Itinerarys from "./pages/products/Itinerarys/Itinerarys";
 import Stays from "./pages/products/Stays/Stays";
 import Tickets from "./pages/products/Tickets/Tickets";
 import Cart from "./pages/cart/Cart";
+import GlobalStyles from "./globalStyles/GlobalStyles";
 
 function App() {
   return (
     <>
+      <GlobalStyles />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route index element={<Navigate replace to="homepage" />} />
+          <Route path="homepage" element={<HomePage />} />
           <Route path="member" element={<Member />} />
           <Route path="foods" element={<Foods />} />
           <Route path="itinerary" element={<Itinerarys />} />
