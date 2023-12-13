@@ -60,6 +60,12 @@ a {
     line-height: 1.8rem ;
     color: var(--color-black);
   }
+
+  span{
+    font-weight: 300 ;
+    font-size: 1.1rem ;
+    line-height: 1.8rem ;
+  }
 `;
 
 export default GlobalStyles;
