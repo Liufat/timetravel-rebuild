@@ -66,6 +66,9 @@ a {
     font-size: 1.1rem ;
     line-height: 1.8rem ;
   }
+  .boxShadow{
+    box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.2);
+  }
 `;
 
 export default GlobalStyles;
