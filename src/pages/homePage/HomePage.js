@@ -5,6 +5,7 @@ import styled from "styled-components";
 import backGroundImage from "./../../image/img/background.png";
 import Banner from "./sections/Banner";
 import Discount from "./sections/Discount";
+import HotProduct from "./sections/HotProduct";
 
 const StyledBackGround = styled.div`
   height: 100vh;
@@ -23,7 +24,7 @@ function HomePage() {
       </StyledBackGround>
       <main>
         <Discount />
-        <section>hot product</section>
+        <HotProduct />
         <section>round image</section>
         <section>why you choose tt</section>
       </main>
