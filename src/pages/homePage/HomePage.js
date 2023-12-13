@@ -6,9 +6,10 @@ import backGroundImage from "./../../image/img/background.png";
 import Banner from "./sections/Banner";
 
 const StyledBackGround = styled.div`
+  height: 100vh;
   background-image: url(${backGroundImage});
-  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 function HomePage() {

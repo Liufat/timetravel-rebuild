@@ -11,7 +11,7 @@ const StyledLink = styled(NavLink)`
 
 const StyledCartIcon = styled(FiShoppingCart)`
   color: var(--color-white);
-  height: 100%;
+
   width: 1.5rem;
 `;
 
@@ -21,11 +21,12 @@ const StyledSearchWrap = styled.div`
 
 const StyledSearchIcon = styled(CiSearch)`
   position: absolute;
-  height: 100%;
+
   width: 1.5rem;
   left: 0.5rem;
   top: 0;
   bottom: 0;
+  color: var(--color-white);
 `;
 
 const StyledSearchInput = styled.input`
@@ -33,9 +34,12 @@ const StyledSearchInput = styled.input`
   border: 1px solid var(--color-white);
   border-radius: 30px;
   color: var(--color-white);
+  padding-left: 2.5rem;
   &::placeholder {
     color: var(--color-white);
-    padding-left: 2.5rem;
+  }
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -45,20 +49,23 @@ function Header() {
       <div className="row py-4">
         <div className="d-flex justify-content-between aling-items-center">
           <div className="d-flex col-5 justify-content-between align-items-center">
-            <img className="col-3" alt="logo" src={logo} />
-            <StyledLink href="/">行程</StyledLink>
-            <StyledLink href="/">美食</StyledLink>
-            <StyledLink href="/">住宿</StyledLink>
-            <StyledLink href="/">票券</StyledLink>
+            <NavLink className="col-3" to="/homepage">
+              <img alt="logo" src={logo} />
+            </NavLink>
+
+            <StyledLink to="itinerary">行程</StyledLink>
+            <StyledLink to="foods">美食</StyledLink>
+            <StyledLink to="stays">住宿</StyledLink>
+            <StyledLink to="tickets">票券</StyledLink>
           </div>
           <div className="d-flex col-5 justify-content-between">
             <StyledSearchWrap>
-              <StyledSearchIcon />
+              <StyledSearchIcon className="h-100" />
               <StyledSearchInput type="text" placeholder="搜尋" />
             </StyledSearchWrap>
-            <StyledLink href="/">登入</StyledLink>
-            <StyledLink href="/">註冊</StyledLink>
-            <StyledCartIcon />
+            <StyledLink to="member">登入</StyledLink>
+            <StyledLink to="member">註冊</StyledLink>
+            <StyledCartIcon className="h-100" />
           </div>
         </div>
       </div>
