@@ -12,7 +12,7 @@ const StyledSpan = styled.span`
 
 function Discount() {
   return (
-    <div className="d-flex flex-column align-items-center ">
+    <section className="d-flex flex-column align-items-center ">
       <h2 className="py-5">最新優惠</h2>
       <div className="d-flex col-10">
         <div className="d-flex justify-content-center align-items-center gap-4">
@@ -27,7 +27,7 @@ function Discount() {
           </StyledSpan>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
