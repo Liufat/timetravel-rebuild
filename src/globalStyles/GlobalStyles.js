@@ -26,6 +26,10 @@ const GlobalStyles = createGlobalStyle`
     margin:0;
    }
 
+*::placeholder{
+  font-family: 'Noto Sans TC', sans-serif ;
+}
+
 body{
     color: var(--color-black);
     font-family: 'Noto Sans TC', sans-serif ;
