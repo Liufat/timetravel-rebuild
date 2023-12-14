@@ -5,6 +5,7 @@ import { IoMdBriefcase } from "react-icons/io";
 import { IoFastFoodSharp } from "react-icons/io5";
 import { FaCouch } from "react-icons/fa";
 import { IoTicketSharp } from "react-icons/io5";
+import Button from "../../../ui/Button";
 
 const StyledSelect = styled.div`
   display: flex;
@@ -30,15 +31,10 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyleButton = styled.button`
-  border: none;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-`;
 function Banner() {
   return (
     <section className="d-flex flex-column justify-content-around align-items-center w-100 h-100">
-      <div className="col-4">
+      <div className="col-xl-4">
         <img className="h-100" alt="logo" src={bannerLogo} />
       </div>
       <div className="d-flex w-100 flex-column align-items-center gap-5">
@@ -60,15 +56,15 @@ function Banner() {
             <IoTicketSharp />
           </StyledSelect>
         </div>
-        <div className="d-flex col-4 gap-0">
+        <div className="d-flex col-xl-4 gap-0">
           <StyledInput
             className="w-100 px-3 py-2"
             type="text"
             placeholder="請輸入關鍵字"
           />
-          <StyleButton className="col-2">
+          <Button type="green" className="col-xl-2">
             <span>搜尋</span>
-          </StyleButton>
+          </Button>
         </div>
       </div>
     </section>

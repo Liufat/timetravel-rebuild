@@ -6,6 +6,8 @@ import backGroundImage from "./../../image/img/background.png";
 import Banner from "./sections/Banner";
 import Discount from "./sections/Discount";
 import HotProduct from "./sections/HotProduct";
+import RoundImage from "./sections/RoundImage";
+import WhyChoose from "./sections/WhyChoose";
 
 const StyledBackGround = styled.div`
   height: 100vh;
@@ -25,8 +27,8 @@ function HomePage() {
       <main>
         <Discount />
         <HotProduct />
-        <section>round image</section>
-        <section>why you choose tt</section>
+        <RoundImage />
+        <WhyChoose />
       </main>
       <Footer />
     </>

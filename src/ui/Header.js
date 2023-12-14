@@ -48,8 +48,8 @@ function Header() {
     <div className="container">
       <div className="row py-4">
         <div className="d-flex justify-content-between aling-items-center">
-          <div className="d-flex col-5 justify-content-between align-items-center">
-            <NavLink className="col-3" to="/homepage">
+          <div className="d-flex col-xl-5 justify-content-between align-items-center">
+            <NavLink className="col-xl-3" to="/homepage">
               <img alt="logo" src={logo} />
             </NavLink>
 
@@ -58,7 +58,7 @@ function Header() {
             <StyledLink to="stays">住宿</StyledLink>
             <StyledLink to="tickets">票券</StyledLink>
           </div>
-          <div className="d-flex col-5 justify-content-between">
+          <div className="d-flex col-xl-5 justify-content-between">
             <StyledSearchWrap>
               <StyledSearchIcon className="h-100" />
               <StyledSearchInput type="text" placeholder="搜尋" />

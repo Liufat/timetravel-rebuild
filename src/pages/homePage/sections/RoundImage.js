@@ -6,7 +6,7 @@ import RoundPictureCard from "../../../ui/RoundPictureCard";
 function RoundImage() {
   return (
     <section className="d-flex py-5 justify-content-center">
-      <div className="d-flex py-5 col-9 justify-content-evenly">
+      <div className="d-flex py-5 col-xl-9 justify-content-evenly">
         <RoundPictureCard pic={pic1} className="d-flex justify-content-center">
           防疫旅館
         </RoundPictureCard>
