@@ -3,19 +3,26 @@ import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import backGroundLink from "./../../image/img/member/BG_member.jpg";
 import logo from "./../../image/icon/logo/logo_white.svg";
+import colorLogo from "./../../image/icon/logo/logo.svg";
 
 const StyledBackground = styled.div`
   height: 100vh;
-  background-image: url(${backGroundLink});
+  @media screen and (min-width: 768px) {
+    background-image: url(${backGroundLink});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 `;
 
 function LoginLayout() {
   return (
     <StyledBackground>
-      <div className="d-flex h-100 w-100 justify-content-around align-items-center">
-        <div className="col-3">
+      <div className="pt-4 pt-md-0 d-flex flex-column flex-md-row h-100 w-100 justify-content-around align-items-center">
+        <div className="col-5 col-md-3">
           <NavLink to="/homepage">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" className="d-none d-md-block" />
+            <img src={colorLogo} alt="logo" className=" d-md-none" />
           </NavLink>
         </div>
         <Outlet />

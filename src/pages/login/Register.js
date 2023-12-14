@@ -6,9 +6,12 @@ import Button from "../../ui/Button";
 import { NavLink } from "react-router-dom";
 
 const StyledSection = styled.section`
-  height: 80vh;
   background-color: var(--color-white);
   border-radius: var(--border-redius);
+
+  @media screen and (min-width: 1200px) {
+    padding: 8rem 0rem;
+  }
 `;
 
 function Login() {
@@ -51,16 +54,16 @@ function Login() {
   };
 
   return (
-    <StyledSection className="col-4 d-flex justify-content-center align-items-center">
-      <div className="d-flex flex-column col-7 gap-2">
+    <StyledSection className="col-10 col-md-5 col-xl-4 d-flex justify-content-evenly justify-content-md-center align-items-center">
+      <div className="d-flex flex-column col-11 col-md-8 col-xl-7 gap-md-2">
         <div className="d-flex flex-column align-items-center">
           <h1>創建帳戶</h1>
           <h2>使用e-mail註冊</h2>
         </div>
         <form className="d-flex flex-column gap-4">
-          <div className="d-flex flex-column">{generateInput()}</div>
+          <div className="d-flex flex-column gap-3">{generateInput()}</div>
           <div className="d-flex justify-content-center">
-            <Button type="green" className="px-5 py-2">
+            <Button type="green" className="px-4 px-md-5 py-2">
               註冊
             </Button>
           </div>

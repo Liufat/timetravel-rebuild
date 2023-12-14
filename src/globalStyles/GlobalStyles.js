@@ -12,8 +12,18 @@ const GlobalStyles = createGlobalStyle`
     --color-white:#fff;
     --color-grey:#d9d9d9;
 
-   //border
-   --border-redius:3px
+    //border
+    --border-redius:3px
+
+    //font-size
+    --font-size-h1:1.3rem;
+    --font-size-xl-h1:2rem;
+
+    --font-size-h2:0.8rem;
+    --font-size-xl-h2:1.5rem;
+
+    --font-size-xl-p:1.1rem;
+
 
 }
 *,
@@ -36,48 +46,48 @@ body{
 
 h1 {
     font-weight: 500 ;
-    font-size: 1.3rem;
+    font-size: var(--font-size-h1);
     line-height: 3rem;
     @media screen and (min-width: 1200px){
-      font-size: 2rem;
+      font-size: var(--font-size-xl-h1);
     }
 }
 h2 {
     font-weight: 400 ;
-    font-size:0.8rem;
+    font-size:var(--font-size-h2);
     line-height: 2.5rem ;
     @media screen and (min-width: 1200px){
-      font-size: 1.5rem ;
+      font-size: var(--font-size-xl-h2) ;
     }
   }
 
 p {
   
     font-weight: 300 ;
-    font-size: 0.8rem;
+    font-size: var(--font-size-h2);
     line-height: 1.8rem ;
     @media screen and (min-width: 1200px){
-      font-size: 1.1rem ;
+      font-size: var(--font-size-xl-p) ;
     }
   }
 
 a {
     text-decoration: none;
     font-weight: 400 ;
-    font-size: 0.8rem;
+    font-size: var(--font-size-h2);
     line-height: 1.8rem ;
     @media screen and (min-width: 1200px){
-      font-size: 1.1rem ;
+      font-size:  var(--font-size-xl-p) ;
     }
     color: var(--color-black);
   }
 
   span{
     font-weight: 300 ;
-    font-size: 0.8rem;
+    font-size: var(--font-size-h2);
     line-height: 1.8rem ;
     @media screen and (min-width: 1200px){
-      font-size: 1.1rem ;
+      font-size: var(--font-size-xl-p) ;
     }
   }
   .boxShadow{

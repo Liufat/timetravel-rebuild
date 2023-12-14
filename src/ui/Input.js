@@ -7,6 +7,10 @@ const StyledInput = styled.input`
   color: var(--color-black);
   &::placeholder {
     color: var(--color-grey);
+    font-size: var(--font-size-h2);
+    @media screen and (min-width: 1200px) {
+      font-size: var(--font-size-h1);
+    }
   }
   &:focus {
     outline: none;
@@ -14,9 +18,9 @@ const StyledInput = styled.input`
   }
 `;
 
-function Input({ label, type, placeholder, children, register }) {
+function Input({ label, type, placeholder, children, register, className }) {
   return (
-    <div className="d-flex flex-column pb-3">
+    <div className={`d-flex flex-column ${className} `}>
       <label for={label}>
         <span>{children}</span>
       </label>
