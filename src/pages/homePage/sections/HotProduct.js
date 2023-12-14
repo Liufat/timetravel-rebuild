@@ -12,12 +12,11 @@ function HotProduct() {
   return (
     <section className="d-flex flex-column align-items-center ">
       <h2 className="py-5">熱門商品</h2>
-      <div className="d-flex col-xl-10">
+      <div className="d-flex col-10 col-xl-10">
         <div className="d-flex justify-content-center align-items-center gap-4">
-          <StyledSpan className="">
+          <StyledSpan>
             <FaChevronLeft />
           </StyledSpan>
-          {/* img, title, star, price */}
           <ProductCard
             className={"col-xl-2"}
             img={pic1}
@@ -26,28 +25,28 @@ function HotProduct() {
             price="499"
           />
           <ProductCard
-            className={"col-xl-2"}
+            className={"d-none d-xl-block col-xl-2"}
             img={pic1}
             title="台北兒童新樂園 | 一日票"
             star="4.9/5"
             price="499"
           />{" "}
           <ProductCard
-            className={"col-xl-2"}
+            className={"d-none d-xl-block col-xl-2"}
             img={pic1}
             title="台北兒童新樂園 | 一日票"
             star="4.9/5"
             price="499"
           />{" "}
           <ProductCard
-            className={"col-xl-2"}
+            className={"d-none d-xl-block col-xl-2"}
             img={pic1}
             title="台北兒童新樂園 | 一日票"
             star="4.9/5"
             price="499"
           />
           <ProductCard
-            className={"col-xl-2"}
+            className={"d-none d-xl-block col-xl-2"}
             img={pic1}
             title="台北兒童新樂園 | 一日票"
             star="4.9/5"

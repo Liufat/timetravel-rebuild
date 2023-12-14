@@ -19,9 +19,9 @@ function Discount() {
           <StyledSpan className="">
             <FaChevronLeft />
           </StyledSpan>
-          <img className="col-xl-3" alt="banner" src={pic1} />
-          <img className="col-xl-3" alt="banner" src={pic2} />
-          <img className="col-xl-3" alt="banner" src={pic3} />
+          <img className="col-8 col-xl-3" alt="banner" src={pic1} />
+          <img className="d-none d-xl-block col-xl-3" alt="banner" src={pic2} />
+          <img className="d-none d-xl-block col-xl-3" alt="banner" src={pic3} />
           <StyledSpan>
             <FaChevronRight />
           </StyledSpan>

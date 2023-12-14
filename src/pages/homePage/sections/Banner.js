@@ -10,7 +10,10 @@ import Button from "../../../ui/Button";
 const StyledSelect = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 0.5rem;
+  @media screen and (min-width: 1200px) {
+    padding: 0 2rem;
+  }
   color: var(--color-grey);
   border-bottom: 1px solid var(--color-grey);
   opacity: 60%;
@@ -34,7 +37,7 @@ const StyledInput = styled.input`
 function Banner() {
   return (
     <section className="d-flex flex-column justify-content-around align-items-center w-100 h-100">
-      <div className="col-xl-4">
+      <div className="col-10 col-xl-4">
         <img className="h-100" alt="logo" src={bannerLogo} />
       </div>
       <div className="d-flex w-100 flex-column align-items-center gap-5">
@@ -56,13 +59,13 @@ function Banner() {
             <IoTicketSharp />
           </StyledSelect>
         </div>
-        <div className="d-flex col-xl-4 gap-0">
+        <div className="d-flex col-10 col-xl-4 gap-0">
           <StyledInput
             className="w-100 px-3 py-2"
             type="text"
             placeholder="請輸入關鍵字"
           />
-          <Button type="green" className="col-xl-2">
+          <Button type="green" className="col-3 col-xl-2">
             <span>搜尋</span>
           </Button>
         </div>

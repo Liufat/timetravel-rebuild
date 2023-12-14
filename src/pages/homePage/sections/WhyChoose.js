@@ -23,10 +23,12 @@ function WhyChoose() {
       <div className="d-flex flex-column gap-5 align-items-center">
         <StyledH1>為什麼選擇TimeTravel？</StyledH1>
         <div className="d-flex flex-column align-items-center">
-          <StyledH2>
+          <StyledH2 className="text-center text-xl-start">
             你知道世界上有超過百萬名自由行旅客選擇TimeTravel作為旅遊規劃網站嗎？
           </StyledH2>
-          <StyledH2>他們透過TimeTravel找到安全又安心的體驗行程！</StyledH2>
+          <StyledH2 className="text-center text-xl-start">
+            他們透過TimeTravel找到安全又安心的體驗行程！
+          </StyledH2>
         </div>
         <div>
           <Button type="transparent" className={"py-1 px-3"}>
