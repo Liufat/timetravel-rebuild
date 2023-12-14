@@ -2,19 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import logo from "./../image/icon/logo/logo_white.svg";
 import { NavLink } from "react-router-dom";
-import { FiShoppingCart } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
-
-const StyledLink = styled(NavLink)`
-  color: var(--color-white);
-`;
-
-const StyledCartIcon = styled(FiShoppingCart)`
-  color: var(--color-white);
-
-  width: 1.5rem;
-`;
+import CartIcon from "./CartIcon";
 
 const StyledSearchWrap = styled.div`
   position: relative;
@@ -22,7 +12,6 @@ const StyledSearchWrap = styled.div`
 
 const StyledSearchIcon = styled(CiSearch)`
   position: absolute;
-
   width: 1.5rem;
   left: 0.5rem;
   top: 0;
@@ -49,45 +38,51 @@ function Header() {
     <div className="container">
       <div className="row py-4">
         <div className="d-flex justify-content-between aling-items-center">
-          <div className="d-flex col-12 col-xl-5 justify-content-between align-items-center">
+          <div className="d-flex col-12 col-lg-8 col-xl-5 justify-content-between align-items-center">
             <RxHamburgerMenu
-              className="col-2 d-xl-none"
+              className="col-1 d-lg-none"
               style={{ color: "white" }}
             />
-            <NavLink className="col-3 col-xl-3" to="/homepage">
+            <NavLink className="col-3 col-md-3" to="/homepage">
               <img alt="logo" src={logo} />
             </NavLink>
-            <CiSearch className="col-2 d-xl-none text-color-white" />
+            <CartIcon className="d-lg-none col-1 h-100 " />
 
-            <StyledLink className="d-none d-xl-block" to="itinerary">
+            <NavLink
+              className="d-none d-lg-block text-color-white"
+              to="itinerary"
+            >
               行程
-            </StyledLink>
-            <StyledLink className="d-none d-xl-block" to="foods">
+            </NavLink>
+            <NavLink className="d-none d-lg-block text-color-white" to="foods">
               美食
-            </StyledLink>
-            <StyledLink className="d-none d-xl-block" to="stays">
+            </NavLink>
+            <NavLink className="d-none d-lg-block text-color-white" to="stays">
               住宿
-            </StyledLink>
-            <StyledLink className="d-none d-xl-block" to="tickets">
+            </NavLink>
+            <NavLink
+              className="d-none d-lg-block text-color-white"
+              to="tickets"
+            >
               票券
-            </StyledLink>
-          </div>
-          <div className="d-flex col-xl-5 justify-content-between">
-            <StyledSearchWrap>
-              <StyledSearchIcon className="d-none d-xl-block h-100" />
-              <StyledSearchInput
-                className="d-none d-xl-block"
-                type="text"
-                placeholder="搜尋"
-              />
+            </NavLink>
+            <StyledSearchWrap className="d-none d-lg-flex d-xl-none col-lg-3 align-items-center">
+              <StyledSearchIcon className=" h-100" />
+              <StyledSearchInput type="text" placeholder="搜尋" />
             </StyledSearchWrap>
-            <StyledLink className="d-none d-xl-block " to="member">
+          </div>
+          <div className="d-flex col-lg-2 col-xl-5 justify-content-between align-items-center">
+            <StyledSearchWrap className="d-none d-xl-flex align-items-center">
+              <StyledSearchIcon className=" h-100" />
+              <StyledSearchInput type="text" placeholder="搜尋" />
+            </StyledSearchWrap>
+            <NavLink className="d-none d-lg-block text-color-white" to="member">
               登入
-            </StyledLink>
-            <StyledLink className="d-none d-xl-block" to="member">
+            </NavLink>
+            <NavLink className="d-none d-lg-block text-color-white" to="member">
               註冊
-            </StyledLink>
-            <StyledCartIcon className="d-none h-100 d-xl-block" />
+            </NavLink>
+            <CartIcon className="d-none d-lg-block h-100" />
           </div>
         </div>
       </div>

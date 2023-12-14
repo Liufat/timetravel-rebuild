@@ -11,6 +11,7 @@ const StyledSelect = styled.div`
   display: flex;
   align-items: center;
   padding: 0 0.5rem;
+  cursor: pointer;
   @media screen and (min-width: 1200px) {
     padding: 0 2rem;
   }
