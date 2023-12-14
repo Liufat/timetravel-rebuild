@@ -58,22 +58,24 @@ function Header({ className }) {
     { link: "register", name: "註冊" },
   ];
 
-  const generateProductLink = (className) => {
+  const generateProductLink = () => {
     return productLinkArray.map((v) => (
       <NavLink
         className={`d-none d-lg-block ${className}`}
         to={`/product/${v.link}`}
+        key={v.link}
       >
         {v.name}
       </NavLink>
     ));
   };
 
-  const generateMemberLink = (className) => {
+  const generateMemberLink = () => {
     return memberLinkArray.map((v) => (
       <NavLink
         className={`d-none d-lg-block ${className}`}
         to={`/login/${v.link}`}
+        key={v.link}
       >
         {v.name}
       </NavLink>

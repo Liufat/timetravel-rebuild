@@ -12,11 +12,9 @@ const GlobalStyles = createGlobalStyle`
     --color-white:#fff;
     --color-grey:#d9d9d9;
 
-    
+   //border
+   --border-redius:3px
 
-
-
-    
 }
 *,
 *::before,
@@ -93,7 +91,9 @@ a {
   .text-color-black{
     color:var(--color-black);
   }
-
+  .text-color-primary{
+    color:var(--color-primary);
+  }
 
 `;
 
