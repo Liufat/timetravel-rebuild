@@ -25,7 +25,7 @@ function HotProduct() {
             price="499"
           />
           <ProductCard
-            className={"d-none d-xl-block col-xl-2"}
+            className={"d-none d-md-block col-xl-2"}
             img={pic1}
             title="台北兒童新樂園 | 一日票"
             star="4.9/5"

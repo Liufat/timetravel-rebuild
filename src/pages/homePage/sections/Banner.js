@@ -36,8 +36,8 @@ const StyledInput = styled.input`
 
 function Banner() {
   return (
-    <section className="d-flex flex-column justify-content-around align-items-center w-100 h-100">
-      <div className="col-10 col-xl-4">
+    <section className="d-flex flex-column justify-content-around align-items-center pb-md-5 pb-xl-0 w-100 h-100">
+      <div className="col-10 col-md-6 col-xl-4">
         <img className="h-100" alt="logo" src={bannerLogo} />
       </div>
       <div className="d-flex w-100 flex-column align-items-center gap-5">

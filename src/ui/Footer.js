@@ -16,15 +16,15 @@ const StyledBorder = styled.div`
 function Footer() {
   return (
     <StyledFooter className="d-flex justify-content-center align-items-center">
-      <div className="mx-4 mx-xl-0 col-xl-8">
-        <StyledBorder className="d-flex flex-column flex-xl-row justify-content-between align-items-center pb-3 pb-xl-5 ">
-          <div className="col-8 col-xl-2">
+      <div className="col-11 col-md-7 col-xl-8">
+        <StyledBorder className="d-flex flex-column flex-md-row justify-content-between align-items-center pb-3 pb-xl-5 ">
+          <div className="col-8 col-md-5 col-xl-2">
             <img alt="logo" className="w-100" src={footerLogo}></img>
           </div>
-          <div className="d-xl-none text-color-white pt-3">
+          <div className="d-md-none text-color-white pt-3">
             <span>E-Mail：service@timetravel.com</span>
           </div>
-          <div className="d-none d-xl-flex col-xl-1 justify-content-center gap-5 text-color-white">
+          <div className="d-none d-md-flex col-xl-1 justify-content-center gap-5 text-color-white">
             <h1>
               <FaFacebookF />
             </h1>
@@ -34,10 +34,10 @@ function Footer() {
           </div>
         </StyledBorder>
         <div className="d-flex flex-column flex-xl-row justify-content-between pt-3 pt-xl-5 text-color-white">
-          <div className="d-none d-xl-block">
+          <div className="d-none d-md-block text-center">
             <span>E-Mail：service@timetravel.com</span>
           </div>
-          <div className="d-flex d-xl-none  col-xl-1 justify-content-center gap-3 gap-xl-5 text-color-white">
+          <div className="d-flex d-md-none  col-xl-1 justify-content-center gap-3 gap-xl-5 text-color-white">
             <h1>
               <FaFacebookF />
             </h1>
