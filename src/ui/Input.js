@@ -21,7 +21,7 @@ const StyledInput = styled.input`
 function Input({ label, type, placeholder, children, register, className }) {
   return (
     <div className={`d-flex flex-column ${className} `}>
-      <label for={label}>
+      <label htmlFor={label}>
         <span>{children}</span>
       </label>
       <StyledInput
@@ -29,7 +29,7 @@ function Input({ label, type, placeholder, children, register, className }) {
         type={type}
         id={label}
         placeholder={placeholder}
-        {...register("name", { required: "此欄位為避填" })}
+        {...register(label, { required: "此欄位為必填" })}
       />
     </div>
   );

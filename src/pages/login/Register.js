@@ -15,7 +15,7 @@ const StyledSection = styled.section`
 `;
 
 function Login() {
-  const { register } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const inputArray = [
     { label: "name", type: "text", placeholder: "王小明", content: "姓名" },
@@ -53,6 +53,10 @@ function Login() {
     ));
   };
 
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <StyledSection className="col-10 col-md-5 col-xl-4 d-flex justify-content-evenly justify-content-md-center align-items-center">
       <div className="d-flex flex-column col-11 col-md-8 col-xl-7 gap-md-2">
@@ -60,7 +64,10 @@ function Login() {
           <h1>創建帳戶</h1>
           <h2>使用e-mail註冊</h2>
         </div>
-        <form className="d-flex flex-column gap-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="d-flex flex-column gap-4"
+        >
           <div className="d-flex flex-column gap-3">{generateInput()}</div>
           <div className="d-flex justify-content-center">
             <Button type="green" className="px-4 px-md-5 py-2">

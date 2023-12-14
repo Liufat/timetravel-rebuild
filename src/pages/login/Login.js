@@ -12,7 +12,7 @@ const StyledSection = styled.section`
 `;
 
 function Login() {
-  const { register } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const inputArray = [
     {
@@ -44,13 +44,20 @@ function Login() {
     ));
   };
 
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <StyledSection className="col-10 col-md-5 col-xl-4 d-flex justify-content-center align-items-center ">
       <div className="d-flex flex-column col-11 col-md-8 col-xl-7 gap-md-2">
         <div className="d-flex flex-column align-items-center">
           <h1>登入</h1>
         </div>
-        <form className="d-flex flex-column gap-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="d-flex flex-column gap-4"
+        >
           <div className="d-flex flex-column">
             {generateInput()}
             <div className="w-100 d-flex justify-content-end">
