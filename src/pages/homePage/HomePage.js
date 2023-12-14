@@ -21,7 +21,7 @@ function HomePage() {
   return (
     <>
       <StyledBackGround>
-        <Header />
+        <Header className={"text-color-white"} />
         <Banner />
       </StyledBackGround>
       <main>

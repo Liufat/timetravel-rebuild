@@ -89,6 +89,12 @@ a {
   .text-color-white{
     color:var(--color-white);
   }
+
+  .text-color-black{
+    color:var(--color-black);
+  }
+
+
 `;
 
 export default GlobalStyles;
