@@ -32,7 +32,7 @@ function RoundImage() {
         </RoundPictureCard>
         <RoundPictureCard
           pic={pic1}
-          className="d-none d-xl-flex justify-content-center"
+          className="d-none d-lg-flex justify-content-center"
         >
           防疫旅館
         </RoundPictureCard>
