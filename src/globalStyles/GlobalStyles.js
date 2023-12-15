@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
     --color-primary:#59d8a1;
     --color-secondary:#63d2ff;
     --color-success:#59d8a1;
-    --color-dander:#ea8a8a;
+    --color-danger:#ea8a8a;
     --color-black:#4d4d4d ;
     --color-white:#fff;
     --color-grey:#d9d9d9;
@@ -104,7 +104,9 @@ a {
   .text-color-primary{
     color:var(--color-primary);
   }
-
+  .text-color-danger{
+    color:var(--color-danger)
+  }
 `;
 
 export default GlobalStyles;
