@@ -18,7 +18,7 @@ const StyledBackground = styled.div`
 function LoginLayout() {
   return (
     <StyledBackground>
-      <div className="pt-4 pt-md-0 d-flex flex-column flex-md-row h-100 w-100 justify-content-around align-items-center">
+      <div className="pt-4 pt-md-0 d-flex flex-column flex-md-row h-100 w-100 justify-content-start justify-content-md-around  align-items-center gap-4 gap-md-0">
         <div className="col-5 col-md-3">
           <NavLink to="/homepage">
             <img src={logo} alt="logo" className="d-none d-md-block" />
