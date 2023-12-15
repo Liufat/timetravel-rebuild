@@ -18,7 +18,14 @@ const StyledInput = styled.input`
   }
 `;
 
-function Input({ label, type, placeholder, children, register, className }) {
+function Input({
+  label,
+  type = "text",
+  placeholder = "",
+  children,
+  register,
+  className,
+}) {
   return (
     <div className={`d-flex flex-column ${className} `}>
       <label htmlFor={label}>

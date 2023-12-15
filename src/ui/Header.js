@@ -54,7 +54,7 @@ function Header({ className }) {
   ];
 
   const memberLinkArray = [
-    { link: "login", name: "登入" },
+    { link: "", name: "登入" },
     { link: "register", name: "註冊" },
   ];
 

@@ -66,7 +66,7 @@ function Login() {
         </div>
         <div className="d-flex justify-content-center">
           <span>或是已有帳戶？</span>
-          <NavLink to="/login/login">
+          <NavLink to="/login">
             <span className="text-color-primary">登入</span>
           </NavLink>
         </div>

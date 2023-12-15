@@ -90,7 +90,7 @@ a {
       font-size: var(--font-size-xl-p) ;
     }
   }
-  .boxShadow{
+  .box-shadow{
     box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.2);
   }
 

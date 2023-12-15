@@ -33,13 +33,13 @@ function App() {
           <Route path="homepage" element={<HomePage />} />
 
           <Route path="login" element={<LoginLayout />}>
-            <Route path="login" element={<Login />} />
+            <Route path="" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="forgetpassword" element={<ForgetPassword />} />
           </Route>
 
           <Route path="member" element={<MemberLayout />}>
-            <Route path="editinformation" element={<EditInformation />} />
+            <Route path="" element={<EditInformation />} />
             <Route path="resetpassword" element={<ResetPassword />} />
             <Route path="mycollect" element={<MyCollect />} />
             <Route path="mycomment" element={<MyComment />} />
