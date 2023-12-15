@@ -8,12 +8,12 @@ import Stays from "./pages/products/Stays/Stays";
 import Tickets from "./pages/products/Tickets/Tickets";
 import Cart from "./pages/cart/Cart";
 import GlobalStyles from "./globalStyles/GlobalStyles";
-import ProductLayout from "./pages/products/ProductLayout";
+import ProductLayout from "./layout/ProductLayout";
 import Login from "./pages/login/Login";
 import Register from "./pages/login/Register";
 import ForgetPassword from "./pages/login/ForgetPassword";
-import MemberLayout from "./pages/member/MemberLayout";
-import LoginLayout from "./pages/login/LoginLayout";
+import MemberLayout from "./layout/MemberLayout";
+import LoginLayout from "./layout/LoginLayout";
 import EditInformation from "./pages/member/EditInformation";
 import ResetPassword from "./pages/member/ResetPassword";
 import MyCollect from "./pages/member/MyCollect";
@@ -22,6 +22,12 @@ import MyOrderHistory from "./pages/member/MyOrderHistory";
 import CheckOutLayout from "./pages/checkoutResult/CheckOutLayout";
 import Success from "./pages/checkoutResult/Success";
 import Fail from "./pages/checkoutResult/Fail";
+import FoodDetail from "./pages/products/Foods/FoodDetail";
+import ItineraryDetail from "./pages/products/Itinerarys/ItineraryDetail";
+import StayDetail from "./pages/products/Stays/StayDetail";
+import TicketDetail from "./pages/products/Tickets/TicketDetail";
+import RegularLayout from "./layout/RegularLayout";
+import ProductDetailLayout from "./layout/ProductDetailLayout";
 
 function App() {
   return (
@@ -32,25 +38,35 @@ function App() {
           <Route index element={<Navigate replace to="homepage" />} />
           <Route path="homepage" element={<HomePage />} />
 
-          <Route path="login" element={<LoginLayout />}>
-            <Route path="" element={<Login />} />
+          <Route element={<LoginLayout />}>
+            <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
-            <Route path="forgetpassword" element={<ForgetPassword />} />
+            <Route path="forget-password" element={<ForgetPassword />} />
           </Route>
 
-          <Route path="member" element={<MemberLayout />}>
-            <Route path="" element={<EditInformation />} />
-            <Route path="resetpassword" element={<ResetPassword />} />
-            <Route path="mycollect" element={<MyCollect />} />
-            <Route path="mycomment" element={<MyComment />} />
-            <Route path="myorderhistory" element={<MyOrderHistory />} />
-          </Route>
-
-          <Route path="product" element={<ProductLayout />}>
-            <Route path="foods" element={<Foods />} />
-            <Route path="itinerary" element={<Itinerarys />} />
-            <Route path="stays" element={<Stays />} />
-            <Route path="tickets" element={<Tickets />} />
+          <Route element={<RegularLayout />}>
+            <Route path="" element={<MemberLayout />}>
+              <Route path="member" element={<EditInformation />} />
+              <Route path="reset-password" element={<ResetPassword />} />
+              <Route path="my-collect" element={<MyCollect />} />
+              <Route path="my-comment" element={<MyComment />} />
+              <Route path="order" element={<MyOrderHistory />} />
+            </Route>
+            <Route element={<ProductLayout />}>
+              <Route path="foods" element={<Foods />} />
+              <Route path="itinerary" element={<Itinerarys />} />
+              <Route path="stays" element={<Stays />} />
+              <Route path="tickets" element={<Tickets />} />
+            </Route>
+            <Route element={<ProductDetailLayout />}>
+              <Route path="foods/detail/:sid" element={<FoodDetail />} />
+              <Route
+                path="itinerary/detail/:sid"
+                element={<ItineraryDetail />}
+              />
+              <Route path="tickets/detail/:sid" element={<TicketDetail />} />
+              <Route path="stays/detail/:sid" element={<StayDetail />} />
+            </Route>
           </Route>
 
           <Route path="cart" element={<Cart />} />

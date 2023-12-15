@@ -1,13 +1,10 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../../ui/Header";
-import Footer from "../../ui/Footer";
-import MemberSideBar from "./MemberSideBar";
+import MemberSideBar from "../pages/member/MemberSideBar";
 
 function MemberLayout() {
   return (
     <>
-      <Header className={"text-color-black"} />
       <div className="container">
         <div className="row">
           <main className="d-flex justify-content-around pb-5 p-md-5">
@@ -20,7 +17,6 @@ function MemberLayout() {
           </main>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

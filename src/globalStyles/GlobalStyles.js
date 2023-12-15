@@ -80,6 +80,10 @@ a {
       font-size:  var(--font-size-xl-p) ;
     }
     color: var(--color-black);
+
+    &.active{
+      color:var(--color-primary);
+    }
   }
 
   span{

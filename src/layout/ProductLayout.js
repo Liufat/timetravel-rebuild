@@ -1,15 +1,12 @@
 import React from "react";
-import Header from "../../ui/Header";
+import ProductSidebar from "../pages/products/ProductSidebar";
+import Breadcrumb from "../ui/Breadcrumb";
+import Arrangement from "../ui/Arrangement";
 import { Outlet } from "react-router-dom";
-import Footer from "../../ui/Footer";
-import ProductSidebar from "./ProductSidebar";
-import Breadcrumb from "../../ui/Breadcrumb";
-import Arrangement from "../../ui/Arrangement";
 
-function ProductLayout() {
+function ProductLayout({ children }) {
   return (
     <>
-      <Header className={"text-color-black"} />
       <div className="container pb-5">
         <div className="row">
           <main className="col-11">
@@ -28,8 +25,6 @@ function ProductLayout() {
           </main>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 }

@@ -54,7 +54,7 @@ function Header({ className }) {
   ];
 
   const memberLinkArray = [
-    { link: "", name: "登入" },
+    { link: "login", name: "登入" },
     { link: "register", name: "註冊" },
   ];
 
@@ -62,7 +62,7 @@ function Header({ className }) {
     return productLinkArray.map((v) => (
       <NavLink
         className={`d-none d-lg-block ${className}`}
-        to={`/product/${v.link}`}
+        to={`/${v.link}`}
         key={v.link}
       >
         {v.name}
@@ -74,7 +74,7 @@ function Header({ className }) {
     return memberLinkArray.map((v) => (
       <NavLink
         className={`d-none d-lg-block ${className}`}
-        to={`/login/${v.link}`}
+        to={`/${v.link}`}
         key={v.link}
       >
         {v.name}

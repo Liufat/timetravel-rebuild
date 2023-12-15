@@ -53,7 +53,7 @@ function Login() {
         <div className="d-flex flex-column gap-4">
           {generateInput()}
           <div className="w-100 d-flex justify-content-end">
-            <NavLink to="/login/forgetpassword">
+            <NavLink to="/forget-password">
               <span className="text-color-primary">忘記密碼？</span>
             </NavLink>
           </div>
@@ -66,7 +66,7 @@ function Login() {
         </div>
         <div className="d-flex justify-content-center">
           <span>還沒註冊？</span>
-          <NavLink to="/login/register">
+          <NavLink to="/register">
             <span className="text-color-primary">立即註冊</span>
           </NavLink>
         </div>

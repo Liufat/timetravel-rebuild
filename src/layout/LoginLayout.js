@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
-import backGroundLink from "./../../image/img/member/BG_member.jpg";
-import logo from "./../../image/icon/logo/logo_white.svg";
-import colorLogo from "./../../image/icon/logo/logo.svg";
+import backGroundLink from "./../image/img/member/BG_member.jpg";
+import logo from "./../image/icon/logo/logo_white.svg";
+import colorLogo from "./../image/icon/logo/logo.svg";
 
 const StyledBackground = styled.div`
   height: 100vh;

@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCard from "../../../ui/ProductCard";
 import productImage from "./../../../image/img/hotpot_home.jpeg";
+import ProductLayout from "../../../layout/ProductLayout";
 
 function Tickets() {
   return (
