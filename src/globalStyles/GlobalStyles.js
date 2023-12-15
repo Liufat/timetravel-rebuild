@@ -56,6 +56,7 @@ h2 {
     font-weight: 400 ;
     font-size:var(--font-size-h2);
     line-height: 2.5rem ;
+    margin: 0;
     @media screen and (min-width: 1200px){
       font-size: var(--font-size-xl-h2) ;
     }
