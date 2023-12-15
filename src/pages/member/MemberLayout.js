@@ -8,12 +8,16 @@ function MemberLayout() {
   return (
     <>
       <Header className={"text-color-black"} />
-      <div className="d-flex justify-content-center pb-5 p-md-5 gap-5">
-        <div className="d-none d-md-block col-10 col-md-4 col-lg-3 col-xl-2">
-          <MemberSideBar />
-        </div>
-        <div className="col-6">
-          <Outlet />
+      <div className="container">
+        <div className="row">
+          <main className="d-flex justify-content-around pb-5 p-md-5">
+            <div className="d-none d-md-block col-10 col-md-4 col-lg-3 col-xl-3">
+              <MemberSideBar />
+            </div>
+            <div className="col-8">
+              <Outlet />
+            </div>
+          </main>
         </div>
       </div>
       <Footer />
