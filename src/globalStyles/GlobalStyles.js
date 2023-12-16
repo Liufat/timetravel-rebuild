@@ -112,6 +112,26 @@ a {
   .text-color-danger{
     color:var(--color-danger)
   }
+  .text-color-grey{
+    color:var(--color-grey)
+  }
+
+
+  button{
+    border: none;
+    color: var(--color-white);
+    &.btn-primary{
+     background-color: var(--color-primary);
+    }
+    &.btn-secondary{
+     background-color: var(--color-secondary);
+    }
+    &.btn-transparent{
+     background-color: transparent;
+     border: 1px solid var(--color-white);
+    }
+    
+  }
 `;
 
 export default GlobalStyles;

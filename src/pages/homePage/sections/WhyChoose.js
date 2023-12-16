@@ -31,7 +31,7 @@ function WhyChoose() {
           </StyledH2>
         </div>
         <div>
-          <Button type="transparent" className={"py-1 px-3"}>
+          <Button className={"py-1 px-3 btn-transparent"}>
             <span>立即註冊</span>
           </Button>
         </div>

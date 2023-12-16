@@ -32,9 +32,7 @@ function ForgetPassword() {
           </Input>
         </div>
         <div className="d-flex justify-content-center pt-5">
-          <Button type="green" className="px-4 px-md-5 py-2">
-            確定
-          </Button>
+          <Button className="px-4 px-md-5 py-2 btn-primary">確定</Button>
         </div>
       </form>
     </LoginFormWrap>

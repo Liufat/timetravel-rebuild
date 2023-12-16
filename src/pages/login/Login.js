@@ -60,9 +60,7 @@ function Login() {
         </div>
 
         <div className="d-flex justify-content-center">
-          <Button type="green" className="px-4 px-md-5 py-2">
-            登入
-          </Button>
+          <Button className="px-4 px-md-5 py-2 btn-primary">登入</Button>
         </div>
         <div className="d-flex justify-content-center">
           <span>還沒註冊？</span>

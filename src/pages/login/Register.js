@@ -60,9 +60,7 @@ function Login() {
       >
         <div className="d-flex flex-column gap-3">{generateInput()}</div>
         <div className="d-flex justify-content-center">
-          <Button type="green" className="px-4 px-md-5 py-2">
-            註冊
-          </Button>
+          <Button className="px-4 px-md-5 py-2 btn-primary">註冊</Button>
         </div>
         <div className="d-flex justify-content-center">
           <span>或是已有帳戶？</span>

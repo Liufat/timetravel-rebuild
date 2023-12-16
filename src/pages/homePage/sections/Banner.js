@@ -66,7 +66,7 @@ function Banner() {
             type="text"
             placeholder="請輸入關鍵字"
           />
-          <Button type="green" className="col-3 col-xl-2">
+          <Button className="col-3 col-xl-2 btn-primary">
             <span>搜尋</span>
           </Button>
         </div>
