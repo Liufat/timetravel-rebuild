@@ -89,6 +89,9 @@ a {
     &.active{
       color:var(--color-primary);
     }
+    &:hover{
+      color:var(--color-primary);
+    }
   }
 
   span{
@@ -130,6 +133,9 @@ a {
     color: var(--color-white);
     &.btn-primary{
      background-color: var(--color-primary);
+     &:hover,&:active,&:focus{
+      background-color: var(--color-primary);
+    }
     }
     &.btn-secondary{
      background-color: var(--color-secondary);
