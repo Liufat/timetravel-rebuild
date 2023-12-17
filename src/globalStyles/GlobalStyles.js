@@ -11,6 +11,7 @@ const GlobalStyles = createGlobalStyle`
     --color-black:#4d4d4d ;
     --color-white:#fff;
     --color-grey:#d9d9d9;
+    --color-dark-grey:#8a8a8a;
 
     //border
     --border-redius:3px
@@ -116,6 +117,10 @@ a {
     color:var(--color-grey)
   }
 
+  .text-color-dark-grey{
+    color:var(--color-dark-grey)
+  }
+
 
   button{
     border: none;
@@ -130,8 +135,21 @@ a {
      background-color: transparent;
      border: 1px solid var(--color-white);
     }
+    &.btn-transparent-primary{
+     background-color: transparent;
+     border: 1px solid var(--color-primary);
+     color:var(--color-primary)
+    }
     
   }
+  
+  svg{
+    &.fill-primary{
+      fill:var(--color-primary)
+    }
+  }
+
+  
 `;
 
 export default GlobalStyles;
