@@ -49,6 +49,7 @@ h1 {
     font-weight: 500 ;
     font-size: var(--font-size-h1);
     line-height: 3rem;
+    margin:0;
     @media screen and (min-width: 1200px){
       font-size: var(--font-size-xl-h1);
     }
@@ -68,6 +69,7 @@ p {
     font-weight: 300 ;
     font-size: var(--font-size-h2);
     line-height: 1.8rem ;
+    margin:0;
     @media screen and (min-width: 1200px){
       font-size: var(--font-size-xl-p) ;
     }
@@ -78,6 +80,7 @@ a {
     font-weight: 400 ;
     font-size: var(--font-size-h2);
     line-height: 1.8rem ;
+    margin:0;
     @media screen and (min-width: 1200px){
       font-size:  var(--font-size-xl-p) ;
     }

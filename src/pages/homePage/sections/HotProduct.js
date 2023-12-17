@@ -30,14 +30,14 @@ function HotProduct() {
             title="台北兒童新樂園 | 一日票"
             star="4.9/5"
             price="499"
-          />{" "}
+          />
           <ProductCard
             className={"d-none d-lg-block col-xl-2"}
             img={pic1}
             title="台北兒童新樂園 | 一日票"
             star="4.9/5"
             price="499"
-          />{" "}
+          />
           <ProductCard
             className={"d-none d-xl-block col-xl-2"}
             img={pic1}
