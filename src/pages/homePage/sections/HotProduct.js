@@ -43,7 +43,7 @@ function HotProduct() {
     <section className="d-flex flex-column align-items-center ">
       <h2 className="py-5">熱門商品</h2>
       <div className="d-flex justify-content-center w-100">
-        <div className="col-10">
+        <div className="col-9 col-md-10">
           <Slider {...settings}>
             <ProductCard
               img={pic1}

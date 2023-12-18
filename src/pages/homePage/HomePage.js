@@ -10,7 +10,7 @@ import RoundImage from "./sections/RoundImage";
 import WhyChoose from "./sections/WhyChoose";
 
 const StyledBackGround = styled.div`
-  height: 100vh;
+  height: 960px;
   background-image: url(${backGroundImage});
   background-repeat: no-repeat;
   background-size: cover;

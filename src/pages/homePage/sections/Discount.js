@@ -37,7 +37,7 @@ function Discount() {
         <h2 className="py-5">最新優惠</h2>
       </section>
       <div className="d-flex w-100 justify-content-center">
-        <div className="col-10">
+        <div className="col-9 col-md-10">
           <Slider {...settings}>
             <img alt="banner" src={pic1} />
             <img alt="banner" src={pic2} />
