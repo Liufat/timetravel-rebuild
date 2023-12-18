@@ -2,6 +2,8 @@ import React from "react";
 import pic1 from "./../../../image/img/banner/banner01.jpg";
 import pic2 from "./../../../image/img/banner/banner02.jpg";
 import pic3 from "./../../../image/img/banner/banner03.jpg";
+import pic4 from "./../../../image/img/banner/banner04.jpg";
+import pic5 from "./../../../image/img/banner/banner05.jpg";
 import Slider from "react-slick";
 import NextArrow from "../../../ui/NextArrow";
 import PreArrow from "../../../ui/PreArrow";
@@ -42,8 +44,8 @@ function Discount() {
             <img alt="banner" src={pic1} />
             <img alt="banner" src={pic2} />
             <img alt="banner" src={pic3} />
-            <img alt="banner" src={pic3} />
-            <img alt="banner" src={pic3} />
+            <img alt="banner" src={pic4} />
+            <img alt="banner" src={pic5} />
           </Slider>
         </div>
       </div>
