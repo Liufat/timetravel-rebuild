@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import bannerLogo from "./../../../image/icon/logo/logo_white.svg";
 import styled from "styled-components";
 import { IoMdBriefcase } from "react-icons/io";
@@ -35,7 +35,28 @@ const StyledInput = styled.input`
   }
 `;
 
+const SearchLink = ({ setActive, active, text, icon }) => {
+  const onClick = () => {
+    setActive(text);
+  };
+  return (
+    <StyledSelect className={active === text ? "active" : ""} onClick={onClick}>
+      <span className="text-color-white">{text}</span>
+      {icon}
+    </StyledSelect>
+  );
+};
+
+const searchLinkArray = [
+  { text: "行程", icon: <IoMdBriefcase /> },
+  { text: "美食", icon: <IoFastFoodSharp /> },
+  { text: "住宿", icon: <FaCouch /> },
+  { text: "票券", icon: <IoTicketSharp /> },
+];
+
 function Banner() {
+  const [active, setActive] = useState("行程");
+
   return (
     <section className="d-flex flex-column justify-content-around align-items-center pb-md-2 pb-xl-0 w-100 h-100">
       <div className="col-10 col-md-6 col-xl-4">
@@ -43,22 +64,15 @@ function Banner() {
       </div>
       <div className="d-flex w-100 flex-column align-items-center gap-5">
         <div className="d-flex">
-          <StyledSelect>
-            <span>行程</span>
-            <IoMdBriefcase />
-          </StyledSelect>
-          <StyledSelect className="active">
-            <span>美食</span>
-            <IoFastFoodSharp />
-          </StyledSelect>
-          <StyledSelect>
-            <span>住宿</span>
-            <FaCouch />
-          </StyledSelect>
-          <StyledSelect>
-            <span>票券</span>
-            <IoTicketSharp />
-          </StyledSelect>
+          {searchLinkArray.map((v) => (
+            <SearchLink
+              active={active}
+              setActive={setActive}
+              text={v.text}
+              icon={v.icon}
+              key={v.text}
+            />
+          ))}
         </div>
         <div className="d-flex col-10 col-xl-4 gap-0">
           <StyledInput
