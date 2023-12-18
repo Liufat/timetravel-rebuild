@@ -169,11 +169,15 @@ a {
   }
 
   .slick-arrow{
-  color:var(--color-black)
+  color:var(--color-black);
+  height:100%;
+  display:flex;
+  align-items:center;
   }
   .slick-next {
     &::before {
       display: none;
+      text-align:center;
     }
     &:hover{
       color:var(--color-black)

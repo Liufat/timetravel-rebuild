@@ -7,7 +7,7 @@ function PreArrow(props) {
     <div
       className={className}
       onClick={onClick}
-      style={{ ...style, display: "block" }}
+      style={{ ...style, display: "flex" }}
     >
       <h2>
         <FaChevronLeft />

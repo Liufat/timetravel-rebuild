@@ -16,6 +16,20 @@ function Discount() {
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PreArrow />,
+    responsive: [
+      {
+        breakpoint: 770,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 430,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
   return (
     <>
