@@ -29,6 +29,9 @@ import TicketDetail from "./pages/products/Tickets/TicketDetail";
 import RegularLayout from "./layout/RegularLayout";
 import ProductDetailLayout from "./layout/ProductDetailLayout";
 
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 function App() {
   return (
     <>

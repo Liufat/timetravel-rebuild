@@ -157,8 +157,37 @@ a {
       fill:var(--color-primary)
     }
   }
-
+  .slick-slider {
+    margin:0 -15px;
   
+  }
+  .slick-slide {
+    padding:10px;
+    text-align:center;
+
+   
+  }
+
+  .slick-arrow{
+  color:var(--color-black)
+  }
+  .slick-next {
+    &::before {
+      display: none;
+    }
+    &:hover{
+      color:var(--color-black)
+    }
+  }
+
+.slick-prev {
+    &::before {
+     display: none;
+    }
+    &:hover{
+      color:var(--color-black)
+    }
+  }
 `;
 
 export default GlobalStyles;

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import backGroundImg from "./../../../image/img/background2.png";
 import Button from "../../../ui/Button";
+import { Link } from "react-router-dom";
 
 const StyledSection = styled.section`
   height: 30rem;
@@ -32,7 +33,9 @@ function WhyChoose() {
         </div>
         <div>
           <Button className={"py-1 px-3 btn-transparent"}>
-            <span>立即註冊</span>
+            <Link to="/register">
+              <span className="text-color-white">立即註冊</span>
+            </Link>
           </Button>
         </div>
       </div>
