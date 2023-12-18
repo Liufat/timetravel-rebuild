@@ -14,19 +14,31 @@ function Discount() {
   return (
     <section className="d-flex flex-column align-items-center ">
       <h2 className="py-5">最新優惠</h2>
-      <div className="d-flex col-md-10 col-xl-11">
+      <div className="d-flex col-md-10 col-xl-12">
         <div className="d-flex justify-content-center align-items-center gap-4">
-          <StyledSpan className="">
+          <StyledSpan className="h-100 col-1 d-flex align-items-center justify-content-center">
             <FaChevronLeft />
           </StyledSpan>
-          <img className="col-8 col-md-5 col-xl-3" alt="banner" src={pic1} />
-          <img
-            className="d-none d-md-block col-md-5 col-xl-3"
-            alt="banner"
-            src={pic2}
-          />
-          <img className="d-none d-xl-block col-xl-3" alt="banner" src={pic3} />
-          <StyledSpan>
+          <div className="d-flex">
+            <div className="d-flex gap-3 justify-content-center">
+              <img
+                className="col-8 col-md-5 col-xl-4"
+                alt="banner"
+                src={pic1}
+              />
+              <img
+                className="d-none d-md-block col-md-5 col-xl-4"
+                alt="banner"
+                src={pic2}
+              />
+              <img
+                className="d-none d-xl-block col-xl-4"
+                alt="banner"
+                src={pic3}
+              />
+            </div>
+          </div>
+          <StyledSpan className="h-100 col-1 d-flex align-items-center justify-content-center">
             <FaChevronRight />
           </StyledSpan>
         </div>
