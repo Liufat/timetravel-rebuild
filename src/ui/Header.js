@@ -49,7 +49,7 @@ function Header({ className }) {
   const productLinkArray = [
     { link: "itinerary", name: "行程" },
     { link: "foods", name: "美食" },
-    { link: "stays", name: "住宿" },
+    { link: "hotels", name: "住宿" },
     { link: "tickets", name: "票券" },
   ];
 

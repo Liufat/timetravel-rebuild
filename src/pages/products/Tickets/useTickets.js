@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { getTickets } from "../../../server/ticketApi";
+import { getTickets } from "../../../server/ticketsApi";
 
-export const useTicket = () => {
+export const useTickets = () => {
   const {
     isLoading,
     data: tickets,

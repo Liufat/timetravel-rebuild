@@ -1,7 +1,7 @@
 import React from "react";
 
-function StayDetail() {
+function HotelDetail() {
   return <div>StayDetail</div>;
 }
 
-export default StayDetail;
+export default HotelDetail;

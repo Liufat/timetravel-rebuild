@@ -39,7 +39,7 @@ function ProductCard({ className = "", img, title, star, price }) {
           </div>
         </div>
 
-        <StyledSpan className="text-end">NT${price}</StyledSpan>
+        <StyledSpan className="text-end">{price && `NT${price}`}</StyledSpan>
       </div>
     </div>
   );

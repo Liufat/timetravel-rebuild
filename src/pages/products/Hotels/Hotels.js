@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import ProductCard from "../../../ui/ProductCard";
-import { ITEMS_PER_PAGE, MY_HOST } from "../../../server/config";
-import { useTickets } from "./useTickets";
-import Loading from "../../../ui/Loading";
 import Pages from "../../../ui/Pages";
+import Loading from "../../../ui/Loading";
+import { useHotels } from "./useHotels";
 import useCountPages from "../../../hooks/useCountPages";
+import { ITEMS_PER_PAGE } from "../../../server/config";
+import { MY_HOST } from "../../../server/config";
 
-function Tickets() {
+function Hotels() {
   const [nowPage, setNowPage] = useState(1);
-  const { tickets, isLoading } = useTickets();
-  const { items, totalPages } = useCountPages(tickets, ITEMS_PER_PAGE, nowPage);
+  const { hotels, isLoading } = useHotels();
+  const { items, totalPages } = useCountPages(hotels, ITEMS_PER_PAGE, nowPage);
 
   if (isLoading) return <Loading />;
 
@@ -39,4 +40,4 @@ function Tickets() {
   );
 }
 
-export default Tickets;
+export default Hotels;
