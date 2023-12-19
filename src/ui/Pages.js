@@ -148,7 +148,7 @@ function Pages({ nowPage, setNowPage, totalPages = 1 }) {
 
   return (
     <div
-      className={`d-flex justify-content-around gap-2 ${
+      className={`d-flex justify-content-around gap-0 gap-md-2 ${
         totalPages > 5 && "col-xl-8"
       }`}
     >
