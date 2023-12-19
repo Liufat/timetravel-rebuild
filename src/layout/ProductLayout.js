@@ -14,11 +14,11 @@ function ProductLayout({ children }) {
               <Breadcrumb />
               <Arrangement />
             </div>
-            <div className="d-flex justify-content-between gap-5">
+            <div className="d-flex justify-content-between">
               <div className="d-none d-md-block col-md-3">
                 <ProductSidebar />
               </div>
-              <div className="col-12 col-md-8">
+              <div className="col-12 col-md-9">
                 <Outlet />
               </div>
             </div>

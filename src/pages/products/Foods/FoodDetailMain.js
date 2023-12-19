@@ -1,9 +1,8 @@
 import React from "react";
-import Breadcrumb from "../../../ui/Breadcrumb";
+
 import productImg from "./../../../image/img/hotpot_home.jpeg";
 import styled from "styled-components";
-import { CiHeart } from "react-icons/ci";
-import { LuCalendarPlus } from "react-icons/lu";
+
 import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
 import { FiMapPin } from "react-icons/fi";
@@ -12,18 +11,6 @@ import { IoPhonePortraitOutline } from "react-icons/io5";
 
 import { FaHouseChimney } from "react-icons/fa6";
 import { IoMdPin } from "react-icons/io";
-import ProductSidebar from "../../../ui/ProductSidebar";
-
-const StyledProductBanner = styled.div`
-  width: 100%;
-  height: 20vh;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  @media screen and (min-width: 768px) {
-    height: 50vh;
-  }
-`;
 
 const StyledCommentCard = styled.div`
   border-top: 1px solid var(--color-grey);
