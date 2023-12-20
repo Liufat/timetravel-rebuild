@@ -9,7 +9,11 @@ import { useState } from "react";
 function Foods() {
   const [nowPage, setNowPage] = useState(1);
   const { foods, isLoading } = useFoods();
-  const { items, totalPages } = useCountPages(foods, ITEMS_PER_PAGE, nowPage);
+  const { items, totalPages } = useCountPages(
+    foods,
+    ITEMS_PER_PAGE,
+    nowPage
+  );
 
   if (isLoading) return <Loading />;
 
@@ -20,7 +24,7 @@ function Foods() {
         return (
           <div className="col-12 col-xl-4 col-md-6 ps-4 pb-4" key={sid}>
             <ProductCard
-              img={`${MY_HOST}/uploads/${product_photo}`}
+              img={`${MY_HOST}/uploads/food/${product_photo}`}
               title={product_name}
               star="4.9/5"
               price={p_selling_price}

@@ -47,7 +47,7 @@ const StyledSearchInput = styled.input`
 
 function Header({ className }) {
   const productLinkArray = [
-    { link: "itinerary", name: "行程" },
+    { link: "sites", name: "行程" },
     { link: "foods", name: "美食" },
     { link: "hotels", name: "住宿" },
     { link: "tickets", name: "票券" },

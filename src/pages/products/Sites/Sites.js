@@ -1,30 +1,29 @@
 import React, { useState } from "react";
 import ProductCard from "../../../ui/ProductCard";
-import Pages from "../../../ui/Pages";
-import Loading from "../../../ui/Loading";
-import { useHotels } from "./useHotels";
+import productImage from "./../../../image/img/hotpot_home.jpeg";
+import { useSites } from "./useSites";
 import useCountPages from "../../../hooks/useCountPages";
 import { ITEMS_PER_PAGE } from "../../../server/config";
+import Loading from "../../../ui/Loading";
+import Pages from "../../../ui/Pages";
 import { MY_HOST } from "../../../server/config";
-
-function Hotels() {
+function Sites() {
   const [nowPage, setNowPage] = useState(1);
-  const { hotels, isLoading } = useHotels();
-  const { items, totalPages } = useCountPages(hotels, ITEMS_PER_PAGE, nowPage);
+  const { sites, isLoading } = useSites();
+  const { items, totalPages } = useCountPages(sites, ITEMS_PER_PAGE, nowPage);
 
   if (isLoading) return <Loading />;
 
   return (
     <div className="d-flex flex-wrap">
-      {items.slice(0, 6).map((v) => {
-        const { sid, picture, product_name, product_price } = v;
+      {items.map((v) => {
+        const { sid, cover, name } = v;
         return (
           <div className="col-12 col-xl-4 col-md-6 ps-4 pb-4" key={sid}>
             <ProductCard
-              img={`${MY_HOST}/uploads/hotel/${picture}`}
-              title={product_name}
+              img={`${MY_HOST}/uploads/site/${cover}`}
+              title={name}
               star="4.9/5"
-              price={product_price}
             />
           </div>
         );
@@ -40,4 +39,4 @@ function Hotels() {
   );
 }
 
-export default Hotels;
+export default Sites;

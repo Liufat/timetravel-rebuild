@@ -20,7 +20,7 @@ function Tickets() {
         return (
           <div className="col-12 col-xl-4 col-md-6 ps-4 pb-4" key={sid}>
             <ProductCard
-              img={`${MY_HOST}/uploads/${product_cover}`}
+              img={`${MY_HOST}/uploads/ticket/${product_cover}`}
               title={product_name}
               star="4.9/5"
               price={product_price}

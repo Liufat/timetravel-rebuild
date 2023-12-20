@@ -1,7 +1,7 @@
 import React from "react";
 
-function ItineraryDetail() {
+function SiteDetail() {
   return <div>ItineraryDetail</div>;
 }
 
-export default ItineraryDetail;
+export default SiteDetail;

@@ -14,3 +14,6 @@ export const GET_TICKETS_LIST = `${MY_HOST}/ticket/api/list`;
 
 // 住宿總表
 export const GET_HOTELS_LIST = `${MY_HOST}/hotel/api`;
+
+// 行程總表
+export const GET_SITES_LIST = `${MY_HOST}/site/api/list`;
