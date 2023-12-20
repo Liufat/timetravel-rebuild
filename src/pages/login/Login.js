@@ -1,12 +1,18 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 import Input from "../../ui/Input";
 import { useForm } from "react-hook-form";
 import LoginFormWrap from "./LoginFormWrap";
+import { useMember } from "./useMember";
 
 function Login() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState } = useForm();
+  const navigate = useNavigate();
+
+  // 錯誤處理
+  const { errors } = formState; //react-hook-form的錯誤處理，主要處理如必填未填等狀況
+  const [error, setError] = useState(); //額外的錯誤處理，主要處理帳號密碼錯誤登入失敗的狀況
 
   const inputArray = [
     {
@@ -23,6 +29,7 @@ function Login() {
     },
   ];
 
+  // 產生input表格
   const generateInput = () => {
     return inputArray.map((v) => (
       <Input
@@ -31,14 +38,23 @@ function Login() {
         placeholder={v.placeholder}
         register={register}
         key={v.label}
+        error={errors?.[v.label]?.message}
       >
         {v.content}
       </Input>
     ));
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
+  // 提交登入表單
+  const onSubmit = (formData) => {
+    useMember.login(formData).then((result) => {
+      if (result === true) {
+        //若登入成功則導向前一個頁面
+        navigate(-1);
+      } else {
+        setError("帳號或密碼錯誤，請重新輸入");//若失敗，更新error內容
+      }
+    });
   };
 
   return (
@@ -52,6 +68,11 @@ function Login() {
       >
         <div className="d-flex flex-column gap-4">
           {generateInput()}
+          {error && ( //若有error，顯示error訊息
+            <div>
+              <span className="text-color-danger">{error}</span>
+            </div>
+          )}
           <div className="w-100 d-flex justify-content-end">
             <NavLink to="/forget-password">
               <span className="text-color-primary">忘記密碼？</span>

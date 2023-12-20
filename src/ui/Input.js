@@ -25,6 +25,7 @@ function Input({
   children,
   register,
   className,
+  error, //接收react-hook-form的錯誤訊息
 }) {
   return (
     <div className={`d-flex flex-column ${className} `}>
@@ -38,6 +39,9 @@ function Input({
         placeholder={placeholder}
         {...register(label, { required: "此欄位為必填" })}
       />
+      <div className="text-color-danger">
+        <span>{error}</span>
+      </div>
     </div>
   );
 }
