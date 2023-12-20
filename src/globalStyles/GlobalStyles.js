@@ -126,7 +126,9 @@ a {
   .text-color-dark-grey{
     color:var(--color-dark-grey)
   }
-
+  .pointer{
+    cursor: pointer;
+  }
 
   button{
     border: none;

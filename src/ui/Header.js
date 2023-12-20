@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import logo from "./../image/icon/logo/logo_white.svg";
 import colorLogo from "./../image/icon/logo/logo.svg";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import CartIcon from "./CartIcon";
 import { useMemberContext } from "../context/MemberContext";
 import memberImage from "./../image/img/dog.png";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const StyledSearchWrap = styled.div`
   position: relative;
@@ -56,7 +57,30 @@ const StyledMemberIcon = styled.div`
   background-repeat: no-repeat;
 `;
 
+const StyledDropdown = styled.div`
+  width: 180px;
+  height: 400px;
+  background-color: var(--color-white);
+  top: 50px;
+`;
+
 function Header({ className }) {
+  // 操控下拉選單的開關
+  const [dropOpen, setDropOpen] = useState(false);
+  const dropEl = useRef(null);
+  useEffect(() => {
+    const onClickOutSideHandles = (e) => {
+      if (dropOpen && !dropEl.current.contains(e.target)) {
+        setDropOpen(false);
+      }
+    };
+    window.addEventListener("click", onClickOutSideHandles);
+    return () => {
+      window.removeEventListener("click", onClickOutSideHandles);
+    };
+  }, [dropOpen]);
+
+  // 渲染link欄位
   const productLinkArray = [
     { link: "sites", name: "行程" },
     { link: "foods", name: "美食" },
@@ -81,7 +105,15 @@ function Header({ className }) {
     ));
   };
 
-  const { member } = useMemberContext();
+  // 登出
+  const logout = () => {
+    useLocalStorage.remove("member");
+    setMember("");
+  };
+
+  ////////////////////////////////
+  // 渲染會員登入欄位
+  const { member, setMember } = useMemberContext();
 
   const generateMemberLink = () => {
     if (!member) {
@@ -96,15 +128,46 @@ function Header({ className }) {
       ));
     } else {
       return (
-        <div className="d-flex align-items-center gap-4">
+        <div
+          ref={dropEl}
+          onClick={() => {
+            setDropOpen(!dropOpen);
+          }}
+          className="d-flex align-items-center gap-4 position-relative pointer"
+        >
           <StyledMemberIcon
             style={{
               backgroundImage: `url(${member.member_img || memberImage})`,
             }}
           />
-          <NavLink to={"/member"} className="text-color-primary">
-            {member.username}
-          </NavLink>
+          <div className="text-color-primary">{member.username}</div>
+          <StyledDropdown
+            className={`position-absolute collapse ${dropOpen && "show"}`}
+          >
+            <div className="px-3 h-100 d-flex flex-column justify-content-evenly box-shadow">
+              <Link to={"/member"}>
+                <span>修改個人資訊</span>
+              </Link>
+              <Link to={"/reset-password"}>
+                <span>重設密碼</span>
+              </Link>
+              <Link to={"/order"}>
+                <span>訂單紀錄</span>
+              </Link>
+              <Link>
+                <span>我的行程規劃</span>
+              </Link>
+              <Link to={"/my-comment"}>
+                <span>我的評論</span>
+              </Link>
+              <Link to={"my-collect"}>
+                <span>我的收藏</span>
+              </Link>
+              <Link onClick={logout}>
+                <span>登出</span>
+              </Link>
+            </div>
+          </StyledDropdown>
         </div>
       );
     }

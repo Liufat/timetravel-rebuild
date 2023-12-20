@@ -6,4 +6,7 @@ export const useLocalStorage = {
     const content = JSON.parse(localStorage.getItem(title));
     return content;
   },
+  remove: (title) => {
+    localStorage.removeItem(title);
+  },
 };
