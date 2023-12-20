@@ -82,7 +82,6 @@ function Header({ className }) {
   };
 
   const { member } = useMemberContext();
-  console.log(member);
 
   const generateMemberLink = () => {
     if (!member) {
@@ -97,7 +96,7 @@ function Header({ className }) {
       ));
     } else {
       return (
-        <div className="d-flex align-items-center gap-2">
+        <div className="d-flex align-items-center gap-4">
           <StyledMemberIcon
             style={{
               backgroundImage: `url(${member.member_img || memberImage})`,
