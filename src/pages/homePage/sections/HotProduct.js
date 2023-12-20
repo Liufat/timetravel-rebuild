@@ -1,6 +1,4 @@
 import React from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import styled from "styled-components";
 import ProductCard from "../../../ui/ProductCard";
 import pic1 from "./../../../image/img/hotpot_home.jpeg";
 import Slider from "react-slick";

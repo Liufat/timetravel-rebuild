@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ProductCard from "../../../ui/ProductCard";
-import productImage from "./../../../image/img/hotpot_home.jpeg";
 import { useSites } from "./useSites";
 import useCountPages from "../../../hooks/useCountPages";
 import { ITEMS_PER_PAGE } from "../../../server/config";
