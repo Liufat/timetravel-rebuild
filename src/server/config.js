@@ -1,7 +1,7 @@
 export const MY_HOST = "http://localhost:3001";
 
 // 會員相關
-
+export const LOG_IN_API = `${MY_HOST}/member/api/login-api`
 // 產品相關
 
 export const ITEMS_PER_PAGE = 6;
