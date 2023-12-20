@@ -63,6 +63,12 @@ const StyledDropdown = styled.div`
   background-color: var(--color-white);
   top: 50px;
 `;
+const StyledDropdownRWD = styled.div`
+  width: 120px;
+  height: 400px;
+  background-color: var(--color-white);
+  top: 50px;
+`;
 
 function Header({ className }) {
   // 操控下拉選單的開關
@@ -129,11 +135,10 @@ function Header({ className }) {
     } else {
       return (
         <div
-          ref={dropEl}
           onClick={() => {
             setDropOpen(!dropOpen);
           }}
-          className="d-flex align-items-center gap-4 position-relative pointer"
+          className="d-none d-lg-flex align-items-center gap-4 position-relative pointer"
         >
           <StyledMemberIcon
             style={{
@@ -174,11 +179,64 @@ function Header({ className }) {
   };
 
   return (
-    <div className="container">
+    <div ref={dropEl} className="container  ">
       <div className="row py-4">
         <div className="d-flex justify-content-between aling-items-center">
-          <div className="d-flex col-12 col-lg-8 col-xl-5 justify-content-between align-items-center">
-            <RxHamburgerMenu className={`col-1 d-lg-none ${className}`} />
+          <div className="d-flex col-12 col-lg-8 col-xl-5 justify-content-between align-items-center position-relative">
+            <StyledDropdownRWD
+              className={`position-absolute box-shadow d-lg-none collapse ${
+                dropOpen && "show"
+              }`}
+            >
+              {member ? (
+                <div className="px-3 h-100 d-flex flex-column justify-content-evenly ">
+                  <StyledMemberIcon
+                    style={{
+                      backgroundImage: `url(${
+                        member.member_img || memberImage
+                      })`,
+                    }}
+                  />
+                  <div className="text-color-primary">{member.username}</div>
+                  <Link to={"/member"}>
+                    <span>修改個人資訊</span>
+                  </Link>
+                  <Link to={"/reset-password"}>
+                    <span>重設密碼</span>
+                  </Link>
+                  <Link to={"/order"}>
+                    <span>訂單紀錄</span>
+                  </Link>
+                  <Link>
+                    <span>我的行程規劃</span>
+                  </Link>
+                  <Link to={"/my-comment"}>
+                    <span>我的評論</span>
+                  </Link>
+                  <Link to={"my-collect"}>
+                    <span>我的收藏</span>
+                  </Link>
+                  <Link onClick={logout}>
+                    <span>登出</span>
+                  </Link>
+                </div>
+              ) : (
+                <div className="px-3 h-100 d-flex flex-column justify-content-evenly align-items-center ">
+                  <Link to={"/login"}>登入</Link>
+                  <Link to={"/register"}>註冊</Link>
+                  <Link to={"/sites"}>行程</Link>
+                  <Link to={"/foods"}>美食</Link>
+                  <Link to={"/hotels"}>住宿</Link>
+                  <Link to={"/tickets"}>票券</Link>
+                </div>
+              )}
+            </StyledDropdownRWD>
+            <RxHamburgerMenu
+              onClick={() => {
+                setDropOpen(!dropOpen);
+              }}
+              className={`col-1 d-lg-none ${className}`}
+            />
             <NavLink className="col-3 col-md-3" to="/homepage">
               <img
                 alt="logo"
