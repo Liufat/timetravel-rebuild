@@ -5,10 +5,12 @@ import Input from "../../ui/Input";
 import { useForm } from "react-hook-form";
 import LoginFormWrap from "./LoginFormWrap";
 import { useMember } from "./useMember";
+import { useMemberContext } from "../../context/MemberContext";
 
 function Login() {
   const { register, handleSubmit, formState } = useForm();
   const navigate = useNavigate();
+  const { setMember } = useMemberContext();
 
   // 錯誤處理
   const { errors } = formState; //react-hook-form的錯誤處理，主要處理如必填未填等狀況
@@ -48,11 +50,12 @@ function Login() {
   // 提交登入表單
   const onSubmit = (formData) => {
     useMember.login(formData).then((result) => {
-      if (result === true) {
+      if (result.success === true) {
         //若登入成功則導向前一個頁面
+        setMember(result.auth);
         navigate(-1);
       } else {
-        setError("帳號或密碼錯誤，請重新輸入");//若失敗，更新error內容
+        setError("帳號或密碼錯誤，請重新輸入"); //若失敗，更新error內容
       }
     });
   };

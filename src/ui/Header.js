@@ -7,6 +7,7 @@ import { CiSearch } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import CartIcon from "./CartIcon";
 import { useMemberContext } from "../context/MemberContext";
+import memberImage from "./../image/img/dog.png";
 
 const StyledSearchWrap = styled.div`
   position: relative;
@@ -46,6 +47,15 @@ const StyledSearchInput = styled.input`
   }
 `;
 
+const StyledMemberIcon = styled.div`
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50% 50%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+
 function Header({ className }) {
   const productLinkArray = [
     { link: "sites", name: "行程" },
@@ -71,18 +81,35 @@ function Header({ className }) {
     ));
   };
 
+  const { member } = useMemberContext();
+  console.log(member);
+
   const generateMemberLink = () => {
-    return memberLinkArray.map((v) => (
-      <NavLink
-        className={`d-none d-lg-block ${className}`}
-        to={`/${v.link}`}
-        key={v.link}
-      >
-        {v.name}
-      </NavLink>
-    ));
+    if (!member) {
+      return memberLinkArray.map((v) => (
+        <NavLink
+          className={`d-none d-lg-block ${className}`}
+          to={`/${v.link}`}
+          key={v.link}
+        >
+          {v.name}
+        </NavLink>
+      ));
+    } else {
+      return (
+        <div className="d-flex align-items-center gap-2">
+          <StyledMemberIcon
+            style={{
+              backgroundImage: `url(${member.member_img || memberImage})`,
+            }}
+          />
+          <NavLink to={"/member"} className="text-color-primary">
+            {member.username}
+          </NavLink>
+        </div>
+      );
+    }
   };
-  const member = useMemberContext();
 
   return (
     <div className="container">

@@ -7,6 +7,6 @@ export const useMember = {
     if (data.success) {
       useLocalStorage.set("member", data.auth);
     }
-    return data.success;
+    return data;
   },
 };

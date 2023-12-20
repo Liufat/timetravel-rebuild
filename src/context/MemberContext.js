@@ -6,12 +6,12 @@ const MemberContext = createContext();
 function MemberProvider({ children }) {
   const [member, setMember] = useState("");
 
-  if (member === "") {
+  if (member === "" && useLocalStorage.get("member")) {
     setMember(useLocalStorage.get("member"));
   }
 
   return (
-    <MemberContext.Provider value={{ member: member }}>
+    <MemberContext.Provider value={{ member: member, setMember: setMember }}>
       {children}
     </MemberContext.Provider>
   );
