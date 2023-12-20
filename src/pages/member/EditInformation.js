@@ -22,7 +22,7 @@ const StyledPictureWrap = styled.div`
 `;
 
 function EditInformation() {
-  const { register, handleSubmit } = useForm();
+  const { register } = useForm();
 
   return (
     <MemberFormWrap>

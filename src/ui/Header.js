@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import CartIcon from "./CartIcon";
+import { useMemberContext } from "../context/MemberContext";
 
 const StyledSearchWrap = styled.div`
   position: relative;
@@ -81,6 +82,7 @@ function Header({ className }) {
       </NavLink>
     ));
   };
+  const member = useMemberContext();
 
   return (
     <div className="container">

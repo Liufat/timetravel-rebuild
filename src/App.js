@@ -33,6 +33,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { MemberProvider } from "./context/MemberContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,53 +46,58 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <ReactQueryDevtools initialIsOpen={false} />
-        <GlobalStyles />
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<Navigate replace to="homepage" />} />
-            <Route path="homepage" element={<HomePage />} />
+      <MemberProvider>
+        <QueryClientProvider client={queryClient}>
+          <ReactQueryDevtools initialIsOpen={false} />
+          <GlobalStyles />
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Navigate replace to="homepage" />} />
+              <Route path="homepage" element={<HomePage />} />
 
-            <Route element={<LoginLayout />}>
-              <Route path="login" element={<Login />} />
-              <Route path="register" element={<Register />} />
-              <Route path="forget-password" element={<ForgetPassword />} />
-            </Route>
-
-            <Route element={<RegularLayout />}>
-              <Route path="" element={<MemberLayout />}>
-                <Route path="member" element={<EditInformation />} />
-                <Route path="reset-password" element={<ResetPassword />} />
-                <Route path="my-collect" element={<MyCollect />} />
-                <Route path="my-comment" element={<MyComment />} />
-                <Route path="order" element={<MyOrderHistory />} />
+              <Route element={<LoginLayout />}>
+                <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
+                <Route path="forget-password" element={<ForgetPassword />} />
               </Route>
-              <Route element={<ProductLayout />}>
-                <Route path="foods" element={<Foods />} />
-                <Route path="sites" element={<Sites />} />
-                <Route path="hotels" element={<Hotels />} />
-                <Route path="tickets" element={<Tickets />} />
+
+              <Route element={<RegularLayout />}>
+                <Route path="" element={<MemberLayout />}>
+                  <Route path="member" element={<EditInformation />} />
+                  <Route path="reset-password" element={<ResetPassword />} />
+                  <Route path="my-collect" element={<MyCollect />} />
+                  <Route path="my-comment" element={<MyComment />} />
+                  <Route path="order" element={<MyOrderHistory />} />
+                </Route>
+                <Route element={<ProductLayout />}>
+                  <Route path="foods" element={<Foods />} />
+                  <Route path="sites" element={<Sites />} />
+                  <Route path="hotels" element={<Hotels />} />
+                  <Route path="tickets" element={<Tickets />} />
+                </Route>
+                <Route element={<ProductDetailLayout />}>
+                  <Route path="foods/detail/:sid" element={<FoodDetail />} />
+                  <Route path="sites/detail/:sid" element={<SiteDetail />} />
+                  <Route
+                    path="tickets/detail/:sid"
+                    element={<TicketDetail />}
+                  />
+                  <Route path="hotels/detail/:sid" element={<HotelDetail />} />
+                </Route>
               </Route>
-              <Route element={<ProductDetailLayout />}>
-                <Route path="foods/detail/:sid" element={<FoodDetail />} />
-                <Route path="sites/detail/:sid" element={<SiteDetail />} />
-                <Route path="tickets/detail/:sid" element={<TicketDetail />} />
-                <Route path="hotels/detail/:sid" element={<HotelDetail />} />
+
+              <Route path="cart" element={<Cart />} />
+
+              <Route path="checkout" element={<CheckOutLayout />}>
+                <Route path="success" element={<Success />} />
+                <Route path="fail" element={<Fail />} />
               </Route>
-            </Route>
 
-            <Route path="cart" element={<Cart />} />
-
-            <Route path="checkout" element={<CheckOutLayout />}>
-              <Route path="success" element={<Success />} />
-              <Route path="fail" element={<Fail />} />
-            </Route>
-
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </QueryClientProvider>
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </QueryClientProvider>
+      </MemberProvider>
     </>
   );
 }
