@@ -20,6 +20,8 @@ function Sites() {
         return (
           <div className="col-12 col-xl-4 col-md-6 ps-4 pb-4" key={sid}>
             <ProductCard
+              productType={"sites"}
+              productId={sid}
               img={`${MY_HOST}/uploads/site/${cover}`}
               title={name}
               star="4.9/5"

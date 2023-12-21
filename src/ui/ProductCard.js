@@ -1,6 +1,7 @@
 import React from "react";
 
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledStar = styled(FaStar)`
@@ -20,9 +21,20 @@ const StyledSpan = styled.span`
   font-weight: 700;
 `;
 
-function ProductCard({ className = "", img, title, star, price }) {
+function ProductCard({
+  className = "",
+  img,
+  title,
+  star,
+  price,
+  productType,
+  productId,
+}) {
   return (
-    <div className={`${className} box-shadow`}>
+    <Link
+      to={`/${productType}/detail/${productId}`}
+      className={`${className} box-shadow`}
+    >
       <StyledImg
         style={{ backgroundImage: `url(${img})` }}
         className="w-100"
@@ -41,7 +53,7 @@ function ProductCard({ className = "", img, title, star, price }) {
 
         <StyledSpan className="text-end">{price && `NT${price}`}</StyledSpan>
       </div>
-    </div>
+    </Link>
   );
 }
 

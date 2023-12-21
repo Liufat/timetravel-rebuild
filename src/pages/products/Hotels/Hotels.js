@@ -21,6 +21,8 @@ function Hotels() {
         return (
           <div className="col-12 col-xl-4 col-md-6 ps-4 pb-4" key={sid}>
             <ProductCard
+              productType={"hotels"}
+              productId={sid}
               img={`${MY_HOST}/uploads/hotel/${picture}`}
               title={product_name}
               star="4.9/5"
