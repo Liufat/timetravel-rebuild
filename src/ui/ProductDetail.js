@@ -16,7 +16,8 @@ import ProductBanner from "./ProductBanner";
 import ProductSidebar from "./ProductSidebar";
 import ProductNavigate from "./ProductNavigate";
 import ProductRecommend from "./ProductRecommend";
-import { DateCalendar } from "@mui/x-date-pickers";
+
+import Calander from "./Calander";
 
 const StyledCommentCard = styled.div`
   border-top: 1px solid var(--color-grey);
@@ -42,8 +43,11 @@ function ProductDetail({
   introduction,
   productName,
 }) {
-  const [value, setValue] = useState();
-  console.log(value);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
+  // console.log(startDate);
+  // console.log(endDate);
 
   if (type === "food")
     return (
@@ -264,10 +268,19 @@ function ProductDetail({
                       </div>
                     </div>
                     <p>{introduction}</p>
-                    <section>
-                      <DateCalendar
-                        value={value}
-                        onChange={(newValue) => setValue(newValue)}
+                    <section className="d-flex gap-4">
+                      <Calander
+                        value={startDate}
+                        setValue={setStartDate}
+                        className={"col-5 box-shadow"}
+                        min={new Date()}
+                        max={endDate}
+                      />
+                      <Calander
+                        value={endDate}
+                        setValue={setEndDate}
+                        min={startDate}
+                        className={"col-5 box-shadow"}
                       />
                     </section>
 
