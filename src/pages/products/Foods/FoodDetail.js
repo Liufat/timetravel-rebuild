@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from "react";
-
-import productImg from "./../../../image/img/hotpot_home.jpeg";
-
-import FoodDetailMain from "./FoodDetailMain";
-import ProductBanner from "../../../ui/ProductBanner";
-import ProductSidebar from "../../../ui/ProductSidebar";
-import ProductRecommend from "../../../ui/ProductRecommend";
-import ProductNavigate from "../../../ui/ProductNavigate";
 import { useFoodDetail } from "./useFoodDetail";
-import { getFoodDetail } from "../../../server/foodsApi";
+
 import { useParams } from "react-router-dom";
 import Loading from "../../../ui/Loading";
+import ProductDetail from "../../../ui/ProductDetail";
 
 function FoodDetail() {
   const { sid } = useParams();
@@ -29,7 +21,7 @@ function FoodDetail() {
     applicable_store,
   } = foodDetail;
   return (
-    <FoodDetailMain
+    <ProductDetail
       type={"food"}
       name={applicable_store}
       image={product_photo}
