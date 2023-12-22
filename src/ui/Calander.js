@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import PreArrow from "./PreArrow";
@@ -62,6 +62,7 @@ const StyledDate = styled.div`
 
 function Calander({
   className,
+  initialValue,
   value,
   setValue,
   min = new Date(),
@@ -193,7 +194,7 @@ function Calander({
             onClick={() => {
               setValue(new Date(yearState, monthState, i + 1));
             }}
-            className={new Date(value).getDate() === i + 1 && "active"}
+            className={new Date(value).getDate() === i + 1 ? "active" : ""}
           >
             <div>{i + 1}</div>
           </button>
@@ -246,7 +247,7 @@ function Calander({
       <div className="w-100 d-flex justify-content-center gap-4 py-3">
         <Button
           onClick={() => {
-            setValue("");
+            setValue(initialValue);
           }}
           className="btn-secondary px-4 py-1"
         >

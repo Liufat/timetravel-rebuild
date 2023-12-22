@@ -43,7 +43,7 @@ function ProductDetail({
   introduction,
   productName,
 }) {
-  const [startDate, setStartDate] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState("");
 
   // console.log(startDate);
@@ -270,16 +270,20 @@ function ProductDetail({
                     <p>{introduction}</p>
                     <section className="d-flex gap-4">
                       <Calander
+                        initialValue={new Date()}
                         value={startDate}
                         setValue={setStartDate}
                         className={"col-5 box-shadow"}
-                        min={new Date()}
+                        min={startDate}
                         max={endDate}
                       />
                       <Calander
+                        initialValue={""}
                         value={endDate}
                         setValue={setEndDate}
-                        min={new Date().setDate(new Date().getDate() + 1)}
+                        min={new Date().setDate(
+                          new Date(startDate).getDate() + 1
+                        )}
                         className={"col-5 box-shadow"}
                       />
                     </section>
