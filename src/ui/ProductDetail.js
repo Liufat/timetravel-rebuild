@@ -279,7 +279,7 @@ function ProductDetail({
                       <Calander
                         value={endDate}
                         setValue={setEndDate}
-                        min={startDate}
+                        min={new Date().setDate(new Date().getDate() + 1)}
                         className={"col-5 box-shadow"}
                       />
                     </section>
