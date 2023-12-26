@@ -29,14 +29,12 @@ import TicketDetail from "./pages/products/Tickets/TicketDetail";
 import RegularLayout from "./layout/RegularLayout";
 import ProductDetailLayout from "./layout/ProductDetailLayout";
 
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { MemberProvider } from "./context/MemberContext";
+import { SearchProvider } from "./context/SearchContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -49,7 +47,7 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <SearchProvider>
         <MemberProvider>
           <QueryClientProvider client={queryClient}>
             <ReactQueryDevtools initialIsOpen={false} />
@@ -105,7 +103,7 @@ function App() {
             </BrowserRouter>
           </QueryClientProvider>
         </MemberProvider>
-      </LocalizationProvider>
+      </SearchProvider>
     </>
   );
 }
