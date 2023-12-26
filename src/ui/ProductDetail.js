@@ -13,7 +13,7 @@ import { FaCouch } from "react-icons/fa";
 import { FaHouseChimney } from "react-icons/fa6";
 import { IoMdPin } from "react-icons/io";
 import ProductBanner from "./ProductBanner";
-import ProductSidebar from "./ProductSidebar";
+import ProductDetailSidebar from "./ProductDetailSidebar";
 import ProductNavigate from "./ProductNavigate";
 import ProductRecommend from "./ProductRecommend";
 
@@ -224,7 +224,7 @@ function ProductDetail({
               </div>
               <div className="d-none d-md-block col-4 col-md-4 col-lg-3">
                 <div className="d-flex h-100 flex-column gap-5 sticky-top">
-                  <ProductSidebar className="box-shadow p-3" />
+                  <ProductDetailSidebar className="box-shadow p-3" />
                   <ProductNavigate className="box-shadow p-3" />
                 </div>
               </div>
@@ -429,7 +429,7 @@ function ProductDetail({
               </div>
               <div className="d-none d-md-block col-4 col-md-4 col-lg-3">
                 <div className="d-flex h-100 flex-column gap-5 sticky-top">
-                  <ProductSidebar className="box-shadow p-3" />
+                  <ProductDetailSidebar className="box-shadow p-3" />
                   <ProductNavigate className="box-shadow p-3" />
                 </div>
               </div>

@@ -1,35 +1,99 @@
 import React from "react";
-import { FaMinusCircle } from "react-icons/fa";
-import { FaCirclePlus } from "react-icons/fa6";
-import Button from "./Button";
-function ProductSidebar({ className }) {
+import { useSearch } from "../context/SearchContext";
+import Input from "./Input";
+
+function ProductSidebar() {
+  const { changeDestination, changeCollect } = useSearch();
+
   return (
-    <div className={className}>
-      <div className="d-flex flex-column gap-2">
-        <h2>選擇張數</h2>
-        <div className="d-flex justify-content-center gap-5 align-items-center">
-          <h2>
-            <FaMinusCircle />
-          </h2>
-          <h2 className="pt-1">1</h2>
-          <h2>
-            <FaCirclePlus className="text-color-primary" />
-          </h2>
+    <div className="d-flex flex-column gap-4">
+      <div className="d-flex flex-column gap-3 box-shadow px-4 py-3">
+        <h1>關鍵字搜尋</h1>
+        <div className="ps-2 d-flex flex-column">
+          <Input inputType="text" placeholder="請輸入關鍵字" />
         </div>
       </div>
-      <div>
-        <h2 className="text-color-grey">
-          <del>TWD$899</del>
-        </h2>
-        <h1 className="text-color-primary">TWD$599</h1>
+      <div className="d-flex flex-column gap-3 box-shadow px-4 py-3">
+        <h1>篩選目的地</h1>
+        <div className="ps-2 d-flex flex-column">
+          <Input
+            inputType="radio"
+            label={"destination--0"}
+            name={"destination"}
+            value={"全部"}
+            onChange={changeDestination}
+            checked={true}
+          />
+          <Input
+            inputType="radio"
+            label={"destination--1"}
+            name={"destination"}
+            value={"基隆市"}
+            onChange={changeDestination}
+          />
+          <Input
+            inputType="radio"
+            label={"destination--2"}
+            name={"destination"}
+            value={"台北市"}
+            onChange={changeDestination}
+          />
+          <Input
+            inputType="radio"
+            label={"destination--3"}
+            name={"destination"}
+            value={"新北市"}
+            onChange={changeDestination}
+          />
+        </div>
       </div>
-      <div className="d-flex justify-content-center gap-3 w-100">
-        <Button className=" btn-secondary py-2 px-1 ">
-          <p>加入購物車</p>
-        </Button>
-        <Button className=" btn-primary py-2 px-1">
-          <p>立即購買</p>
-        </Button>
+      <div className="d-flex flex-column gap-3 box-shadow px-4 py-3">
+        <h1>收藏</h1>
+        <div className="ps-2">
+          <Input
+            inputType="radio"
+            label={"collect--0"}
+            name={"collect"}
+            value={"無設定範圍"}
+            onChange={changeCollect}
+            checked={true}
+          />
+          <Input
+            inputType="radio"
+            label={"collect--1"}
+            name={"collect"}
+            value={"0~50"}
+            onChange={changeCollect}
+          />
+          <Input
+            inputType="radio"
+            label={"collect--2"}
+            name={"collect"}
+            value={"51~100"}
+            onChange={changeCollect}
+          />
+          <Input
+            inputType="radio"
+            label={"collect--3"}
+            name={"collect"}
+            value={"101~150"}
+            onChange={changeCollect}
+          />
+          <Input
+            inputType="radio"
+            label={"collect--4"}
+            name={"collect"}
+            value={"151~200"}
+            onChange={changeCollect}
+          />
+          <Input
+            inputType="radio"
+            label={"collect--5"}
+            name={"collect"}
+            value={"201以上"}
+            onChange={changeCollect}
+          />
+        </div>
       </div>
     </div>
   );

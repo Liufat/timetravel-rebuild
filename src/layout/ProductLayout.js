@@ -1,5 +1,5 @@
 import React from "react";
-import ProductSidebar from "../pages/products/ProductSidebar";
+import ProductSidebar from "../ui/ProductSidebar";
 import Breadcrumb from "../ui/Breadcrumb";
 import Arrangement from "../ui/Arrangement";
 import { Outlet } from "react-router-dom";
