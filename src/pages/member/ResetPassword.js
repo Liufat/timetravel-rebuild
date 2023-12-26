@@ -11,6 +11,7 @@ function ResetPassword() {
       <h1>重設密碼</h1>
       <form className="d-flex flex-column gap-5 col-12 col-md-6 ">
         <Input
+          inputType="form"
           label="oldPassword"
           type="password"
           placeholder="請輸入舊密碼"
@@ -19,6 +20,7 @@ function ResetPassword() {
           舊密碼
         </Input>
         <Input
+          inputType="form"
           label="newPassword"
           type="password"
           placeholder="8位以上英數密碼，請區分大小寫"
@@ -27,6 +29,7 @@ function ResetPassword() {
           新密碼
         </Input>
         <Input
+          inputType="form"
           label="newPasswordCheck"
           type="password"
           placeholder="請輸入相同密碼"
@@ -35,7 +38,7 @@ function ResetPassword() {
           再次輸入新密碼
         </Input>
         <div className="d-flex justify-content-center">
-          <Button type="green" className="px-3 py-1">
+          <Button type="green" className="px-3 py-1 btn-primary">
             確定
           </Button>
         </div>

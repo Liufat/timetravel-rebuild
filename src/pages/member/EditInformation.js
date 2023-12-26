@@ -30,14 +30,24 @@ function EditInformation() {
       <StyledPictureWrap style={{ backgroundImage: `url(${picture})` }} />
 
       <form className="d-flex flex-column gap-3 col-12 col-md-6 ">
-        <Input label="name" placeholder="請輸入姓名" register={register}>
+        <Input
+          inputType="form"
+          label="name"
+          placeholder="請輸入姓名"
+          register={register}
+        >
           姓名
         </Input>
-        <Input label="number" placeholder="09xx-xxx-xxx" register={register}>
+        <Input
+          inputType="form"
+          label="number"
+          placeholder="09xx-xxx-xxx"
+          register={register}
+        >
           手機號碼
         </Input>
         <div className="d-flex justify-content-center">
-          <Button type="green" className="px-3 py-1">
+          <Button type="green" className="px-3 py-1 btn-primary">
             儲存
           </Button>
         </div>

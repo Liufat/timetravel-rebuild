@@ -23,6 +23,7 @@ function ForgetPassword() {
       >
         <div className="d-flex flex-column">
           <Input
+            inputType="form"
             label="email"
             type="email"
             placeholder="example@gmail.com"

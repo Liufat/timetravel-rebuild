@@ -33,6 +33,7 @@ function Login() {
   const generateInput = () => {
     return inputArray.map((v) => (
       <Input
+        inputType="form"
         label={v.label}
         type={v.type}
         placeholder={v.placeholder}
