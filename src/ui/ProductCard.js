@@ -31,10 +31,7 @@ function ProductCard({
   productId,
 }) {
   return (
-    <Link
-      to={`/${productType}/detail/${productId}`}
-      className={`${className} box-shadow`}
-    >
+    <Link to={`/${productType}/detail/${productId}`} className={`${className}`}>
       <StyledImg
         style={{ backgroundImage: `url(${img})` }}
         className="w-100"

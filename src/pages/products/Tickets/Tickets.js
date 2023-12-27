@@ -5,20 +5,36 @@ import { useTickets } from "./useTickets";
 import Loading from "../../../ui/Loading";
 import Pages from "../../../ui/Pages";
 import useCountPages from "../../../hooks/useCountPages";
+import styled from "styled-components";
+import useSearchFilter from "../../../hooks/useSearchFilter";
+
+const StyledWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 1rem;
+`;
+
+const StyledPagesWrap = styled.div`
+  grid-column: 1/-1;
+`;
 
 function Tickets() {
   const [nowPage, setNowPage] = useState(1);
   const { tickets, isLoading } = useTickets();
-  const { items, totalPages } = useCountPages(tickets, ITEMS_PER_PAGE, nowPage);
+  const { items, totalPages } = useCountPages(
+    useSearchFilter(tickets),
+    ITEMS_PER_PAGE,
+    nowPage
+  );
 
   if (isLoading) return <Loading />;
 
   return (
-    <div className="d-flex flex-wrap">
+    <StyledWrap className="px-3">
       {items.slice(0, 6).map((v) => {
         const { sid, product_cover, product_name, product_price } = v;
         return (
-          <div className="col-12 col-xl-4 col-md-6 ps-4 pb-4" key={sid}>
+          <div className="box-shadow" key={sid}>
             <ProductCard
               productType={"tickets"}
               productId={sid}
@@ -30,14 +46,14 @@ function Tickets() {
           </div>
         );
       })}
-      <div className="w-100 d-flex justify-content-center">
+      <StyledPagesWrap className="w-100 d-flex justify-content-center">
         <Pages
           nowPage={nowPage}
           setNowPage={setNowPage}
           totalPages={totalPages}
         />
-      </div>
-    </div>
+      </StyledPagesWrap>
+    </StyledWrap>
   );
 }
 

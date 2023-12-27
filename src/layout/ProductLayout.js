@@ -14,7 +14,7 @@ function ProductLayout({ children }) {
               <Breadcrumb />
               <Arrangement />
             </div>
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between gap-3">
               <div className="d-none d-md-block col-md-3">
                 <ProductSidebar />
               </div>

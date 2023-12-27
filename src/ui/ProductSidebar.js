@@ -3,7 +3,7 @@ import { useSearch } from "../context/SearchContext";
 import Input from "./Input";
 
 function ProductSidebar() {
-  const { changeDestination, changeCollect } = useSearch();
+  const { searchState, changeDestination, changeCollect } = useSearch();
 
   return (
     <div className="d-flex flex-column gap-4">
@@ -22,7 +22,7 @@ function ProductSidebar() {
             name={"destination"}
             value={"全部"}
             onChange={changeDestination}
-            checked={true}
+            checked={searchState.filter.destination}
           />
           <Input
             inputType="radio"
@@ -30,6 +30,7 @@ function ProductSidebar() {
             name={"destination"}
             value={"基隆市"}
             onChange={changeDestination}
+            checked={searchState.filter.destination}
           />
           <Input
             inputType="radio"
@@ -37,6 +38,7 @@ function ProductSidebar() {
             name={"destination"}
             value={"台北市"}
             onChange={changeDestination}
+            checked={searchState.filter.destination}
           />
           <Input
             inputType="radio"
@@ -44,6 +46,7 @@ function ProductSidebar() {
             name={"destination"}
             value={"新北市"}
             onChange={changeDestination}
+            checked={searchState.filter.destination}
           />
         </div>
       </div>

@@ -25,7 +25,7 @@ function SearchProvider({ children }) {
       case "INITIAL":
         return {
           ...state,
-          filter: { destination: "", collect: "" },
+          filter: { destination: "全部", collect: "無設定範圍" },
         };
 
       default:
@@ -34,7 +34,7 @@ function SearchProvider({ children }) {
   };
 
   const [state, dispatch] = useReducer(searchReducer, {
-    filter: { destination: "", collect: "" },
+    filter: { destination: "全部", collect: "無設定範圍" },
   });
 
   const changeDestination = (destination) => {
@@ -56,7 +56,7 @@ function SearchProvider({ children }) {
   return (
     <SearchContext.Provider
       value={{
-        state: state,
+        searchState: state,
         changeDestination: changeDestination,
         changeCollect: changeCollect,
         searchInitial: searchInitial,

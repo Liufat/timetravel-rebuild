@@ -78,7 +78,7 @@ function Input({
           onChange={(e) => {
             onChange(e.target.value);
           }}
-          defaultChecked={checked}
+          defaultChecked={checked === value}
         />
         <label className="pointer" htmlFor={label}>
           <p>{value}</p>

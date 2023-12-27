@@ -6,19 +6,35 @@ import { ITEMS_PER_PAGE } from "../../../server/config";
 import Loading from "../../../ui/Loading";
 import Pages from "../../../ui/Pages";
 import { MY_HOST } from "../../../server/config";
+import styled from "styled-components";
+import useSearchFilter from "../../../hooks/useSearchFilter";
+
+const StyledWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 1rem;
+`;
+
+const StyledPagesWrap = styled.div`
+  grid-column: 1/-1;
+`;
 function Sites() {
   const [nowPage, setNowPage] = useState(1);
   const { sites, isLoading } = useSites();
-  const { items, totalPages } = useCountPages(sites, ITEMS_PER_PAGE, nowPage);
+  const { items, totalPages } = useCountPages(
+    useSearchFilter(sites),
+    ITEMS_PER_PAGE,
+    nowPage
+  );
 
   if (isLoading) return <Loading />;
 
   return (
-    <div className="d-flex flex-wrap">
+    <StyledWrap className="px-3">
       {items.map((v) => {
         const { sid, cover, name } = v;
         return (
-          <div className="col-12 col-xl-4 col-md-6 ps-4 pb-4" key={sid}>
+          <div className="box-shadow" key={sid}>
             <ProductCard
               productType={"sites"}
               productId={sid}
@@ -29,14 +45,14 @@ function Sites() {
           </div>
         );
       })}
-      <div className="w-100 d-flex justify-content-center">
+      <StyledPagesWrap className="w-100 d-flex justify-content-center">
         <Pages
           nowPage={nowPage}
           setNowPage={setNowPage}
           totalPages={totalPages}
         />
-      </div>
-    </div>
+      </StyledPagesWrap>
+    </StyledWrap>
   );
 }
 
