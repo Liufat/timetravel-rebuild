@@ -22,6 +22,7 @@ const StyledPagesWrap = styled.div`
 function Foods() {
   const [nowPage, setNowPage] = useState(1);
   const { foods, isLoading } = useFoods();
+
   const { items, totalPages } = useCountPages(
     useSearchFilter(foods),
     ITEMS_PER_PAGE,

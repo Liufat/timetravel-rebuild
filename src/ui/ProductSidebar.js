@@ -3,14 +3,20 @@ import { useSearch } from "../context/SearchContext";
 import Input from "./Input";
 
 function ProductSidebar() {
-  const { searchState, changeDestination, changeCollect } = useSearch();
+  const { searchState, changeDestination, changeCollect, changeKeyword } =
+    useSearch();
 
   return (
     <div className="d-flex flex-column gap-4">
       <div className="d-flex flex-column gap-3 box-shadow px-4 py-3">
         <h1>關鍵字搜尋</h1>
         <div className="ps-2 d-flex flex-column">
-          <Input inputType="text" placeholder="請輸入關鍵字" />
+          <Input
+            inputType="text"
+            placeholder="請輸入關鍵字"
+            value={searchState.filter.keyword}
+            onChange={changeKeyword}
+          />
         </div>
       </div>
       <div className="d-flex flex-column gap-3 box-shadow px-4 py-3">

@@ -32,14 +32,14 @@ function Sites() {
   return (
     <StyledWrap className="px-3">
       {items.map((v) => {
-        const { sid, cover, name } = v;
+        const { sid, cover, product_name } = v;
         return (
           <div className="box-shadow" key={sid}>
             <ProductCard
               productType={"sites"}
               productId={sid}
               img={`${MY_HOST}/uploads/site/${cover}`}
-              title={name}
+              title={product_name}
               star="4.9/5"
             />
           </div>

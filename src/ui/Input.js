@@ -97,10 +97,11 @@ function Input({
           type={type}
           id={label}
           placeholder={placeholder}
+          value={value}
+          onChange={(e) => {
+            onChange(e.target.value);
+          }}
         />
-        <div className="text-color-danger">
-          <span>{error}</span>
-        </div>
       </div>
     );
   }

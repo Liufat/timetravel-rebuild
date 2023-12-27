@@ -25,7 +25,7 @@ function SearchProvider({ children }) {
       case "INITIAL":
         return {
           ...state,
-          filter: { destination: "全部", collect: "無設定範圍" },
+          filter: { destination: "全部", collect: "無設定範圍", keyword: "" },
         };
 
       default:
@@ -34,7 +34,7 @@ function SearchProvider({ children }) {
   };
 
   const [state, dispatch] = useReducer(searchReducer, {
-    filter: { destination: "全部", collect: "無設定範圍" },
+    filter: { destination: "全部", collect: "無設定範圍", keyword: "" },
   });
 
   const changeDestination = (destination) => {
