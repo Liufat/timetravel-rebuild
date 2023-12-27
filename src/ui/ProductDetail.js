@@ -42,6 +42,8 @@ function ProductDetail({
   category,
   introduction,
   productName,
+  originalPrice,
+  price,
 }) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState("");
@@ -53,7 +55,7 @@ function ProductDetail({
     return (
       <>
         <div className="container">
-          <div className="row">
+          <div id="top" className="row">
             <ProductBanner image={image} name={name} type={type} />
             <div className="d-flex justify-content-between">
               <div className="col-md-7 col-lg-8">
@@ -83,7 +85,10 @@ function ProductDetail({
                     </div>
                     <p>{introduction}</p>
 
-                    <section className="d-flex flex-column gap-3">
+                    <section
+                      id="introduction"
+                      className="d-flex flex-column gap-3"
+                    >
                       <h2>商品介紹</h2>
                       <div className="d-flex flex-column gap-3">
                         <img
@@ -100,7 +105,9 @@ function ProductDetail({
                           <div>
                             <IoPhonePortraitOutline />
                           </div>
-                          <div className="pt-1">如何使用</div>
+                          <div id="howToUse" className="pt-1">
+                            如何使用
+                          </div>
                         </h2>
                       </div>
                       <div>
@@ -116,7 +123,9 @@ function ProductDetail({
                           <div>
                             <FaHouseChimney />
                           </div>
-                          <div className="pt-1">適用店家</div>
+                          <div id="applicableStores" className="pt-1">
+                            適用店家
+                          </div>
                         </h2>
                       </div>
                       <div>
@@ -138,7 +147,7 @@ function ProductDetail({
 
                     <section>
                       <div className="d-flex flex-column gap-3">
-                        <h2>旅客評價</h2>
+                        <h2 id="commit">旅客評價</h2>
                         <div className="d-flex justify-content-between">
                           <div className="d-flex align-items-center gap-3 gap-md-5 col-md-6">
                             <h1 className="m-0 text-color-primary">4.3</h1>
@@ -224,14 +233,18 @@ function ProductDetail({
               </div>
               <div className="d-none d-md-block col-4 col-md-4 col-lg-3">
                 <div className="d-flex h-100 flex-column gap-5 sticky-top">
-                  <ProductDetailSidebar className="box-shadow p-3" />
+                  <ProductDetailSidebar
+                    originalPrice={originalPrice}
+                    price={price}
+                    className="box-shadow p-3"
+                  />
                   <ProductNavigate className="box-shadow p-3" />
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <ProductRecommend image={productImg} />
+        <ProductRecommend id={"recommend"} image={productImg} />
       </>
     );
 

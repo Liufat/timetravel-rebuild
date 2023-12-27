@@ -2,7 +2,7 @@ import React from "react";
 import { FaMinusCircle } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 import Button from "./Button";
-function ProductDetailSidebar({ className }) {
+function ProductDetailSidebar({ className, originalPrice, price }) {
   return (
     <div className={className}>
       <div className="d-flex flex-column gap-2">
@@ -19,9 +19,9 @@ function ProductDetailSidebar({ className }) {
       </div>
       <div>
         <h2 className="text-color-grey">
-          <del>TWD$899</del>
+          <del>TWD${originalPrice}</del>
         </h2>
-        <h1 className="text-color-primary">TWD$599</h1>
+        <h1 className="text-color-primary">TWD${price}</h1>
       </div>
       <div className="d-flex justify-content-center gap-3 w-100">
         <Button className=" btn-secondary py-2 px-1 ">

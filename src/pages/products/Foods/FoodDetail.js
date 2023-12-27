@@ -19,6 +19,8 @@ function FoodDetail() {
     categories_name,
     product_introduction,
     applicable_store,
+    p_discounted_price,
+    p_selling_price,
   } = foodDetail;
   return (
     <ProductDetail
@@ -31,6 +33,8 @@ function FoodDetail() {
       category={categories_name}
       introduction={product_introduction}
       productName={product_name}
+      originalPrice={p_discounted_price}
+      price={p_selling_price}
     />
   );
 }

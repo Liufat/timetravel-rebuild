@@ -6,9 +6,9 @@ const StyledSpan = styled.span`
   cursor: pointer;
 `;
 
-function ProductRecommend({ image }) {
+function ProductRecommend({ image, id }) {
   return (
-    <div className="container d-none d-xl-block my-5">
+    <div id={id} className="container d-none d-xl-block my-5">
       <div className="row">
         <section className="d-flex flex-column gap-5">
           <h2>更多美食推薦</h2>
