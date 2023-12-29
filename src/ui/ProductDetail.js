@@ -37,7 +37,18 @@ function ProductDetail({
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState("");
   const [typeSelected, setTypeSelected] = useState(0);
-  // console.log(typeSelected);
+  const [quantity, setQuantity] = useState(1);
+
+  const quantityMinusOne = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    } else {
+      return;
+    }
+  };
+  const quantityPlusOne = () => {
+    setQuantity(quantity + 1);
+  };
 
   const generateSideBar = () => {
     if (type === "hotel" || type === "ticket") {
@@ -62,8 +73,11 @@ function ProductDetail({
           </div>
           <ProductDetailSidebar
             originalPrice={originalPrice}
-            price={productType[typeSelected].typePrice}
+            price={quantity * productType[typeSelected].typePrice}
             className="box-shadow p-3"
+            quantityMinusOne={quantityMinusOne}
+            quantityPlusOne={quantityPlusOne}
+            quantity={quantity}
           />
         </>
       );
@@ -71,8 +85,11 @@ function ProductDetail({
       return (
         <ProductDetailSidebar
           originalPrice={originalPrice}
-          price={price}
+          price={quantity * price}
           className="box-shadow p-3"
+          quantityMinusOne={quantityMinusOne}
+          quantityPlusOne={quantityPlusOne}
+          quantity={quantity}
         />
       );
     }

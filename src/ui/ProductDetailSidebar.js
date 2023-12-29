@@ -2,19 +2,40 @@ import React from "react";
 import { FaMinusCircle } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 import Button from "./Button";
-function ProductDetailSidebar({ className, originalPrice, price }) {
+import styled from "styled-components";
+
+const StyledButton = styled.button`
+  background-color: transparent;
+  color: var(--color-primary);
+  &:disabled {
+    color: var(--color-grey);
+  }
+`;
+
+function ProductDetailSidebar({
+  className,
+  originalPrice,
+  price,
+  quantityMinusOne,
+  quantityPlusOne,
+  quantity,
+}) {
   return (
     <div className={className}>
       <div className="d-flex flex-column gap-2">
         <h2>選擇張數</h2>
         <div className="d-flex justify-content-center gap-5 align-items-center">
-          <h2>
-            <FaMinusCircle />
-          </h2>
-          <h2 className="pt-1">1</h2>
-          <h2>
-            <FaCirclePlus className="text-color-primary" />
-          </h2>
+          <StyledButton onClick={quantityMinusOne} disabled={quantity === 1}>
+            <h2>
+              <FaMinusCircle />
+            </h2>
+          </StyledButton>
+          <h2 className="pt-1">{quantity}</h2>
+          <StyledButton onClick={quantityPlusOne}>
+            <h2>
+              <FaCirclePlus className="text-color-primary" />
+            </h2>
+          </StyledButton>
         </div>
       </div>
       <div>
