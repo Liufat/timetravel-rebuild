@@ -12,6 +12,7 @@ export const GET_FOOD_DETAIL = `${MY_HOST}/food/item`;
 
 // 票券總表
 export const GET_TICKETS_LIST = `${MY_HOST}/ticket/api/list`;
+export const GET_TICKET_DETAIL = `${MY_HOST}/ticket/item`;
 
 // 住宿總表
 export const GET_HOTELS_LIST = `${MY_HOST}/hotel/api`;

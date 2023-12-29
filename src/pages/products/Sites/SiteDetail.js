@@ -1,7 +1,7 @@
 import React from "react";
 
 function SiteDetail() {
-  return <div>ItineraryDetail</div>;
+  return <div>SiteDetail</div>;
 }
 
 export default SiteDetail;

@@ -4,9 +4,8 @@ import { useFoods } from "./useFoods";
 import Loading from "../../../ui/Loading";
 import useCountPages from "../../../hooks/useCountPages";
 import Pages from "../../../ui/Pages";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useSearchFilter from "../../../hooks/useSearchFilter";
-import { useSearch } from "../../../context/SearchContext";
 import styled from "styled-components";
 
 const StyledWrap = styled.div`
@@ -33,16 +32,21 @@ function Foods() {
   return (
     <StyledWrap className="px-3">
       {items.map((v) => {
-        const { sid, product_photo, product_name, p_selling_price } = v;
+        const {
+          sid,
+          product_photo: cover,
+          product_name: name,
+          p_selling_price: price,
+        } = v;
         return (
           <div className="box-shadow" key={sid}>
             <ProductCard
               productType={"foods"}
               productId={sid}
-              img={`${MY_HOST}/uploads/food/${product_photo}`}
-              title={product_name}
+              img={`${MY_HOST}/uploads/food/${cover}`}
+              title={name}
               star="4.9/5"
-              price={p_selling_price}
+              price={price}
             />
           </div>
         );

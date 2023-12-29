@@ -138,6 +138,9 @@ a {
      &:hover,&:active,&:focus{
       background-color: var(--color-primary);
     }
+    &.active{
+      background-color: var(--color-secondary);
+    }
     }
     &.btn-secondary{
      background-color: var(--color-secondary);

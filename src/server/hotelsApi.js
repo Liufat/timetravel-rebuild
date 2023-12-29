@@ -7,6 +7,9 @@ export const getHotels = async () => {
 };
 export const getHotelDetail = async (sid) => {
   const { data } = await axios.get(`${GET_HOTEL_DETAIL}/${sid}`);
+  const roomData = await axios.get(`${GET_HOTEL_DETAIL}/${sid}/room`);
 
-  return data;
+  const result = { ...data, room: roomData.data };
+
+  return result;
 };

@@ -18,9 +18,11 @@ function ProductDetailSidebar({ className, originalPrice, price }) {
         </div>
       </div>
       <div>
-        <h2 className="text-color-grey">
-          <del>TWD${originalPrice}</del>
-        </h2>
+        {originalPrice && (
+          <h2 className="text-color-grey">
+            <del>TWD${originalPrice}</del>
+          </h2>
+        )}
         <h1 className="text-color-primary">TWD${price}</h1>
       </div>
       <div className="d-flex justify-content-center gap-3 w-100">
