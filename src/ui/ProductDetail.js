@@ -21,6 +21,7 @@ import TicketDatePick from "./TicketDatePick";
 import Button from "./Button";
 
 function ProductDetail({
+  sid,
   type,
   image,
   area,
@@ -72,6 +73,8 @@ function ProductDetail({
             })}
           </div>
           <ProductDetailSidebar
+            sid={sid}
+            productName={productName}
             originalPrice={originalPrice}
             price={quantity * productType[typeSelected].typePrice}
             className="box-shadow p-3"
@@ -84,6 +87,9 @@ function ProductDetail({
     } else {
       return (
         <ProductDetailSidebar
+          type={type}
+          productName={productName}
+          sid={sid}
           originalPrice={originalPrice}
           price={quantity * price}
           className="box-shadow p-3"

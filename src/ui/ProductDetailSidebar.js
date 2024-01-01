@@ -3,6 +3,7 @@ import { FaMinusCircle } from "react-icons/fa";
 import { FaCirclePlus } from "react-icons/fa6";
 import Button from "./Button";
 import styled from "styled-components";
+import { useCart } from "../context/CartContext";
 
 const StyledButton = styled.button`
   background-color: transparent;
@@ -13,6 +14,9 @@ const StyledButton = styled.button`
 `;
 
 function ProductDetailSidebar({
+  type,
+  productName,
+  sid,
   className,
   originalPrice,
   price,
@@ -20,6 +24,13 @@ function ProductDetailSidebar({
   quantityPlusOne,
   quantity,
 }) {
+  const { cartState, addCart } = useCart();
+
+  const handleAddCart = () => {
+    addCart({ type: type, id: sid, productName: productName });
+    console.log(cartState);
+  };
+
   return (
     <div className={className}>
       <div className="d-flex flex-column gap-2">
@@ -47,7 +58,7 @@ function ProductDetailSidebar({
         <h1 className="text-color-primary">TWD${price}</h1>
       </div>
       <div className="d-flex justify-content-center gap-3 w-100">
-        <Button className=" btn-secondary py-2 px-1 ">
+        <Button className=" btn-secondary py-2 px-1 " onClick={handleAddCart}>
           <p>加入購物車</p>
         </Button>
         <Button className=" btn-primary py-2 px-1">

@@ -35,6 +35,7 @@ function FoodDetail() {
       productName={name}
       originalPrice={originalPrice}
       price={price}
+      sid={sid}
     />
   );
 }
