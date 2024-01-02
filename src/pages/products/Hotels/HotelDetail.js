@@ -33,6 +33,7 @@ function HotelDetail() {
   return (
     <ProductDetail
       type={"hotel"}
+      sid={sid}
       name={product_name}
       image={picture}
       hours={check_in}

@@ -23,12 +23,23 @@ function ProductDetailSidebar({
   quantityMinusOne,
   quantityPlusOne,
   quantity,
+  chozenType,
+  startDate,
+  endDate,
 }) {
-  const { cartState, addCart } = useCart();
+  const { addCart } = useCart();
 
   const handleAddCart = () => {
-    addCart({ type: type, id: sid, productName: productName });
-    console.log(cartState);
+    addCart({
+      type,
+      id: sid,
+      productName,
+      chozenType,
+      price: price,
+      quantity,
+      startDate,
+      endDate,
+    });
   };
 
   return (

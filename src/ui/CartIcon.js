@@ -24,6 +24,7 @@ const StyledCount = styled.div`
 `;
 function CartIcon({ className }) {
   const { cartState } = useCart();
+
   return (
     <NavLink to={"/cart"} className={`position-relative ${className}`}>
       <StyledCartIcon className="h-100" />

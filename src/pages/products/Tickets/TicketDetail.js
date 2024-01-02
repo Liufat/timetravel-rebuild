@@ -42,10 +42,12 @@ function TicketDetail() {
 
   return (
     <ProductDetail
+      sid={sid}
       type={"ticket"}
       image={product_cover}
       area={area_name}
       name={product_name}
+      productName={product_name}
       address={address}
       category={classname}
       introduction={product_introduction}

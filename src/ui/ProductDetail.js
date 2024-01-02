@@ -81,13 +81,17 @@ function ProductDetail({
           </div>
           <ProductDetailSidebar
             sid={sid}
+            type={type}
             productName={productName}
             originalPrice={originalPrice}
             price={quantity * productType[typeSelected].typePrice}
             className="box-shadow p-3"
+            chozenType={productType[typeSelected]?.typeName}
             quantityMinusOne={quantityMinusOne}
             quantityPlusOne={quantityPlusOne}
             quantity={quantity}
+            startDate={startDate}
+            endDate={endDate}
           />
         </>
       );

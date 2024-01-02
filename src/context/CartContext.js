@@ -1,23 +1,42 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const CartContext = createContext();
 
 function CartProvider({ children }) {
-  // cart={
-  //     foodCart:[{name:OOXX,quantity:OOXX},{name:OOXX,quantity:OOXX}],hotelCart:{},ticketCart:{}
-  // }
   const isItemExisting = (item, payload) => {
     const existingItemIndex = item.findIndex(
       (item) => item.type === payload.type && item.id === payload.id
     );
     return existingItemIndex;
   };
-  const initialCartItems = {
+
+  let initialCartItems = {
     cartItems: [],
     isEmpty: true,
     totalItems: 0,
   };
+
+  const init = (initialCartItems) => {
+    if (initialCartItems.cartItems !== 0) {
+      return {
+        cartItems: initialCartItems.cartItems,
+        totalItems: initialCartItems.cartItems.length,
+        isEmpty: false,
+      };
+    }
+    return { ...initialCartItems };
+  };
+
+  if (!initialCartItems.cartItems.length) {
+    try {
+      const item = useLocalStorage.get("TimeTravelCart");
+      initialCartItems.cartItems = item ? item : [];
+    } catch (err) {
+      initialCartItems.cartItems = [];
+      throw new Error(err);
+    }
+  }
 
   const cartReducer = (state, action) => {
     switch (action.type) {
@@ -51,13 +70,21 @@ function CartProvider({ children }) {
         throw new Error(`不存在的action type: ${action.type}`);
     }
   };
-  const [state, dispatch] = useReducer(cartReducer, {
-    ...initialCartItems,
-  });
+
+  const [state, dispatch] = useReducer(cartReducer, initialCartItems, init);
+
+  // console.log(state);
+
+  useEffect(() => {
+    if (
+      JSON.stringify(state.cartItems) !== useLocalStorage.get("TimeTravelCart")
+    ) {
+      useLocalStorage.set("TimeTravelCart", state.cartItems);
+    }
+  }, [state.cartItems]);
 
   const addCart = (cartItems) => {
     dispatch({ type: "ADD_CART", payload: cartItems });
-    useLocalStorage.set("cart", state);
   };
 
   return (
