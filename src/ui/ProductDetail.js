@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import productImg from "./../image/img/hotpot_home.jpeg";
 import { MY_HOST } from "../server/config";
 
@@ -39,6 +39,13 @@ function ProductDetail({
   const [endDate, setEndDate] = useState("");
   const [typeSelected, setTypeSelected] = useState(0);
   const [quantity, setQuantity] = useState(1);
+
+  const top = useRef(null);
+  const introductionRef = useRef(null);
+  const howToUse = useRef(null);
+  const commit = useRef(null);
+  const recommend = useRef(null);
+  const applicableStores = useRef(null);
 
   const quantityMinusOne = () => {
     if (quantity > 1) {
@@ -104,7 +111,7 @@ function ProductDetail({
   return (
     <>
       <div className="container">
-        <div id="top" className="row">
+        <div ref={top} className="row">
           {/* ---------------------------商品照片與日期選擇--------------------------------- */}
           <ProductBanner image={image} name={name} type={type} />
           <div className="d-flex justify-content-between">
@@ -151,7 +158,7 @@ function ProductDetail({
                   )}
                   {/* ---------------------------商品介紹--------------------------------- */}
                   <section
-                    id="introduction"
+                    ref={introductionRef}
                     className="d-flex flex-column gap-3"
                   >
                     <h2>商品介紹</h2>
@@ -171,7 +178,7 @@ function ProductDetail({
                         <div>
                           <IoPhonePortraitOutline />
                         </div>
-                        <div id="howToUse" className="pt-1">
+                        <div ref={howToUse} className="pt-1">
                           如何使用
                         </div>
                       </h2>
@@ -189,7 +196,7 @@ function ProductDetail({
                         <div>
                           <FaHouseChimney />
                         </div>
-                        <div id="applicableStores" className="pt-1">
+                        <div ref={applicableStores} className="pt-1">
                           適用店家
                         </div>
                       </h2>
@@ -213,7 +220,7 @@ function ProductDetail({
                   {/* ---------------------------旅客評價--------------------------------- */}
                   <section>
                     <div className="d-flex flex-column gap-3">
-                      <h2 id="commit">旅客評價</h2>
+                      <h2 ref={commit}>旅客評價</h2>
                       <div className="d-flex justify-content-between">
                         <div className="d-flex align-items-center gap-3 gap-md-5 col-md-6">
                           <h1 className="m-0 text-color-primary">4.3</h1>
@@ -245,13 +252,23 @@ function ProductDetail({
             <div className="d-none d-md-block col-4 col-md-4 col-lg-3">
               <div className="d-flex h-100 flex-column gap-5 sticky-top">
                 {generateSideBar()}
-                <ProductNavigate className="box-shadow p-3" />
+                <ProductNavigate
+                  topRef={top}
+                  introductionRef={introductionRef}
+                  howToUseRef={howToUse}
+                  commitRef={commit}
+                  recommendRef={recommend}
+                  applicableStoresRef={applicableStores}
+                  className="box-shadow p-3"
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <ProductRecommend id={"recommend"} image={productImg} />
+      <div ref={recommend}>
+        <ProductRecommend image={productImg} />
+      </div>
     </>
   );
 }
