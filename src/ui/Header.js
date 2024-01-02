@@ -268,9 +268,7 @@ function Header({ className }) {
 
             {generateMemberLink(className)}
 
-            <NavLink to={"/cart"}>
-              <CartIcon className={`d-none d-lg-block h-100 ${className}`} />
-            </NavLink>
+            <CartIcon className={`d-none d-lg-block h-100 ${className}`} />
           </div>
         </div>
       </div>

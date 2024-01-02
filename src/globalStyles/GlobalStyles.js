@@ -197,6 +197,7 @@ a {
       color:var(--color-black)
     }
   }
+
 `;
 
 export default GlobalStyles;
