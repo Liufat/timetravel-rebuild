@@ -1,13 +1,34 @@
 import React from "react";
-import Header from "../../ui/Header";
-import Footer from "../../ui/Footer";
+import CartHeader from "./CartHeader";
+import CartSidebar from "./CartSidebar";
+import CartBody from "./CartBody";
+import { useCartPage } from "../../context/CartPageContext";
 
 function Cart() {
+  const { cartPageState } = useCartPage();
+
+  const { allPages, nowPage } = cartPageState;
+
+  const createDom = () => {
+    if (allPages[nowPage] === "資料確認" || allPages[nowPage] === "結帳") {
+      return <CartBody className="py-5" />;
+    } else {
+      return (
+        <>
+          <CartBody className="col-7 py-5" />
+          <CartSidebar className="col-4 py-5" />
+        </>
+      );
+    }
+  };
   return (
     <>
-      <Header className={"text-color-black"} />
-
-      <Footer />
+      <div className="container">
+        <div className="row">
+          <CartHeader />
+          <div className="d-flex gap-5">{createDom()}</div>
+        </div>
+      </div>
     </>
   );
 }

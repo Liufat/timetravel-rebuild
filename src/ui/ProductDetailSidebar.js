@@ -4,6 +4,7 @@ import { FaCirclePlus } from "react-icons/fa6";
 import Button from "./Button";
 import styled from "styled-components";
 import { useCart } from "../context/CartContext";
+import { MY_HOST } from "../server/config";
 
 const StyledButton = styled.button`
   background-color: transparent;
@@ -26,12 +27,14 @@ function ProductDetailSidebar({
   chozenType,
   startDate,
   endDate,
+  image,
 }) {
   const { addCart } = useCart();
 
   const handleAddCart = () => {
     addCart({
       type,
+      image: `${MY_HOST}/uploads/${type}/${image}`,
       id: sid,
       productName,
       chozenType,

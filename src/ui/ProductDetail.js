@@ -92,6 +92,7 @@ function ProductDetail({
             quantity={quantity}
             startDate={startDate}
             endDate={endDate}
+            image={image}
           />
         </>
       );
@@ -107,6 +108,7 @@ function ProductDetail({
           quantityMinusOne={quantityMinusOne}
           quantityPlusOne={quantityPlusOne}
           quantity={quantity}
+          image={image}
         />
       );
     }

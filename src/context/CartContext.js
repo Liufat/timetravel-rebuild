@@ -4,6 +4,7 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 const CartContext = createContext();
 
 function CartProvider({ children }) {
+  //購物車內容用的context
   const isItemExisting = (item, payload) => {
     const existingItemIndex = item.findIndex(
       (item) => item.type === payload.type && item.id === payload.id
