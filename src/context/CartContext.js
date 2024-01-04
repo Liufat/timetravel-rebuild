@@ -39,33 +39,42 @@ function CartProvider({ children }) {
     }
   }
 
+  const addCartFunction = (state, action) => {
+    const existingItemIndex = isItemExisting(state.cartItems, action.payload);
+    if (existingItemIndex > -1) {
+      return {
+        cartItems: [...state.cartItems],
+        isEmpty: false,
+        totalItems: state.totalItems,
+      };
+    }
+    return {
+      cartItems: [...state.cartItems, action.payload],
+      isEmpty: false,
+      totalItems: state.totalItems + 1,
+    };
+  };
+
+  const removeCartFunction = (state, action) => {
+    const newItems = [...state.cartItems];
+    const newFilterItems = newItems.filter((item) => {
+      return item.type !== action.payload.type || item.id !== action.payload.id;
+    });
+    const newResult = {
+      ...state,
+      cartItems: newFilterItems,
+      totalItems: state.totalItems - 1,
+    };
+
+    return newResult;
+  };
+
   const cartReducer = (state, action) => {
     switch (action.type) {
       case "ADD_CART":
-        const existingItemIndex = isItemExisting(
-          state.cartItems,
-          action.payload
-        );
-        if (existingItemIndex > -1) {
-          return {
-            cartItems: [...state.cartItems],
-            isEmpty: false,
-            totalItems: state.totalItems,
-          };
-        }
-        return {
-          cartItems: [...state.cartItems, action.payload],
-          isEmpty: false,
-          totalItems: state.totalItems + 1,
-        };
-
+        return addCartFunction(state, action);
       case "REMOVE_CART":
-        return {
-          ...state,
-          [action.cartType]: state[action.cartType].filter(
-            (item) => item !== action.payload
-          ),
-        };
+        return removeCartFunction(state, action);
 
       default:
         throw new Error(`不存在的action type: ${action.type}`);
@@ -88,8 +97,13 @@ function CartProvider({ children }) {
     dispatch({ type: "ADD_CART", payload: cartItems });
   };
 
+  const removeCart = (item) => {
+    dispatch({ type: "REMOVE_CART", payload: item });
+  };
   return (
-    <CartContext.Provider value={{ cartState: state, addCart: addCart }}>
+    <CartContext.Provider
+      value={{ cartState: state, addCart: addCart, removeCart: removeCart }}
+    >
       {children}
     </CartContext.Provider>
   );

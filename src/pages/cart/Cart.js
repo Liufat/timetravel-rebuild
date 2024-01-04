@@ -26,7 +26,9 @@ function Cart() {
       <div className="container">
         <div className="row">
           <CartHeader />
-          <div className="d-flex gap-5">{createDom()}</div>
+          <div className="d-flex gap-5 justify-content-between">
+            {createDom()}
+          </div>
         </div>
       </div>
     </>

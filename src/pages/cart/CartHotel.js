@@ -18,7 +18,12 @@ function CartHotel() {
       return <CartProductCard key={v.id} type={"hotel"} item={v} />;
     });
 
-  return createDom();
+  return (
+    <>
+      {createDom()}
+      <div></div>
+    </>
+  );
 }
 
 export default CartHotel;
