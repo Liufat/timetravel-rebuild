@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { ImCross } from "react-icons/im";
 import Button from "./Button";
 import moment from "moment";
@@ -6,10 +6,28 @@ import { useCart } from "../context/CartContext";
 import Input from "./Input";
 import TicketCount from "./TicketCount";
 import useAddDays from "../hooks/useAddDays";
+import useCountDay from "../hooks/useCountDay";
 
 function CartProductCard({ item, type }) {
-  const addDays = useAddDays;
+  const countDay = useCountDay;
   const { quantityPlusOne, quantityMinusOne, editCart } = useCart();
+
+  const [dayCount, setDayCount] = useState(
+    countDay(item.startDate, item.endDate)
+  );
+
+  const { startDate, endDate, quantity, image, productName } = item;
+
+  useEffect(() => {
+    const countDayResult = countDay(startDate, endDate);
+    setDayCount(countDayResult);
+  }, [startDate, endDate, countDay]);
+
+  if (item.quantity !== dayCount) {
+    editCart(item, { quantity: dayCount });
+  }
+
+  const addDays = useAddDays;
   const createHotelDom = () => {
     return (
       <>
@@ -24,7 +42,7 @@ function CartProductCard({ item, type }) {
               type={"date"}
               label={"startDate"}
               min={moment().format("YYYY-MM-DD")}
-              max={item.endDate}
+              max={endDate}
               onChange={(e) => {
                 editCart(item, { startDate: e.target.value });
               }}
@@ -34,11 +52,11 @@ function CartProductCard({ item, type }) {
           </div>
           <div>
             <Input
-              value={item.endDate}
+              value={endDate}
               inputType="date"
               type={"date"}
               label={"endDate"}
-              min={moment(addDays(item.startDate, 1)).format("YYYY-MM-DD")}
+              min={moment(addDays(startDate, 1)).format("YYYY-MM-DD")}
               onChange={(e) => {
                 editCart(item, { endDate: e.target.value });
               }}
@@ -47,7 +65,7 @@ function CartProductCard({ item, type }) {
             </Input>
           </div>
           <div className="d-flex align-items-end">
-            <p className=" px-3 py-1 border">1晚</p>
+            <p className=" px-3 py-1 border">{dayCount}晚</p>
           </div>
         </div>
       </>
@@ -59,7 +77,7 @@ function CartProductCard({ item, type }) {
       return (
         <TicketCount
           className={"col-2"}
-          quantity={item.quantity}
+          quantity={quantity}
           plus={() => {
             quantityPlusOne(item);
           }}
@@ -79,7 +97,7 @@ function CartProductCard({ item, type }) {
         <div className="d-flex gap-3">
           <div
             style={{
-              backgroundImage: `url(${item.image})`,
+              backgroundImage: `url(${image})`,
               width: "50px",
               height: "50px",
               backgroundPosition: "center",
@@ -88,7 +106,7 @@ function CartProductCard({ item, type }) {
             }}
           ></div>
           <div>
-            <p>{item.productName}</p>
+            <p>{productName}</p>
             <p>4.3顆星</p>
           </div>
         </div>
