@@ -17,7 +17,6 @@ function HotelDetail() {
     address,
     area_name,
     hotel_categories,
-    facility,
     tag,
     room,
   } = hotelDetail;

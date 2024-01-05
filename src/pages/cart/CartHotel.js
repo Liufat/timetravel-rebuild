@@ -11,7 +11,6 @@ function CartHotel() {
     });
     setCartHotel(cartHotelObject);
   }, [cartState.cartItems]);
-  console.log(cartHotel);
 
   const createDom = () =>
     cartHotel.map((v) => {

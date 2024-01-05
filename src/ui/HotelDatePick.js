@@ -10,14 +10,7 @@ function HotelDatePick({ startDate, setStartDate, endDate, setEndDate }) {
         setValue={setStartDate}
         className={"col-5 box-shadow"}
         min={startDate}
-        max={endDate}
-      />
-      <Calander
-        initialValue={""}
-        value={endDate}
-        setValue={setEndDate}
-        min={new Date().setDate(new Date(startDate).getDate() + 1)}
-        className={"col-5 box-shadow"}
+        endDate={endDate}
       />
     </section>
   );

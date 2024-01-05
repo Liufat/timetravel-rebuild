@@ -69,12 +69,46 @@ function CartProvider({ children }) {
     return newResult;
   };
 
+  const editCartFunction = (state, action) => {
+    const existingItemIndex = isItemExisting(
+      state.cartItems,
+      action.payload.targetItem
+    );
+    if (existingItemIndex > -1) {
+      // 2.如果有找到重複項目的index，則先複製一個與state.items相同的array
+      const newItems = [...state.cartItems];
+      // 3.然後將array的指定index項目，對比action.payload，若有相同props則進行取代
+      newItems[existingItemIndex] = {
+        ...newItems[existingItemIndex],
+        ...action.payload.changingTarget,
+      };
+
+      const newResult = { ...state, cartItems: newItems };
+
+      return newResult;
+    }
+
+    return state;
+  };
+
+  const quantityPlusOne = (item) => {
+    editCart(item, { quantity: item.quantity + 1 });
+  };
+
+  const quantityMinusOne = (item) => {
+    if (item.quantity > 1) {
+      editCart(item, { quantity: item.quantity - 1 });
+    }
+  };
+
   const cartReducer = (state, action) => {
     switch (action.type) {
       case "ADD_CART":
         return addCartFunction(state, action);
       case "REMOVE_CART":
         return removeCartFunction(state, action);
+      case "EDIT_CART":
+        return editCartFunction(state, action);
 
       default:
         throw new Error(`不存在的action type: ${action.type}`);
@@ -100,9 +134,24 @@ function CartProvider({ children }) {
   const removeCart = (item) => {
     dispatch({ type: "REMOVE_CART", payload: item });
   };
+
+  const editCart = (targetItem, changingTarget) => {
+    dispatch({
+      type: "EDIT_CART",
+      payload: { targetItem: targetItem, changingTarget: changingTarget },
+    });
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartState: state, addCart: addCart, removeCart: removeCart }}
+      value={{
+        cartState: state,
+        addCart: addCart,
+        removeCart: removeCart,
+        editCart: editCart,
+        quantityPlusOne: quantityPlusOne,
+        quantityMinusOne: quantityMinusOne,
+      }}
     >
       {children}
     </CartContext.Provider>

@@ -47,6 +47,8 @@ function Input({
   value,
   onChange,
   checked,
+  min,
+  max,
 }) {
   if (inputType === "form") {
     return (
@@ -101,6 +103,24 @@ function Input({
           onChange={(e) => {
             onChange(e.target.value);
           }}
+        />
+      </div>
+    );
+  }
+  if (inputType === "date") {
+    return (
+      <div className={`d-flex flex-column ${className} `}>
+        <label htmlFor={label}>
+          <span>{children}</span>
+        </label>
+        <StyledInputText
+          className="px-3 py-2"
+          type={type}
+          id={label}
+          value={value}
+          onChange={onChange}
+          max={max}
+          min={min}
         />
       </div>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import PreArrow from "./PreArrow";
@@ -66,7 +66,8 @@ function Calander({
   value,
   setValue,
   min = new Date(),
-  max = new Date(min.getFullYear + 5),
+  max,
+  endDate,
 }) {
   const currentDate = new Date();
   const nowYear = currentDate.getFullYear();
@@ -194,7 +195,11 @@ function Calander({
             onClick={() => {
               setValue(new Date(yearState, monthState, i + 1));
             }}
-            className={new Date(value).getDate() === i + 1 ? "active" : ""}
+            className={
+              value.getDate() === i + 1 || endDate.getDate() >= i + 1
+                ? "active"
+                : ""
+            }
           >
             <div>{i + 1}</div>
           </button>

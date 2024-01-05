@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import productImg from "./../image/img/hotpot_home.jpeg";
 import { MY_HOST } from "../server/config";
 
@@ -19,6 +19,7 @@ import HotelDatePick from "./HotelDatePick";
 import Comment from "./Comment";
 import TicketDatePick from "./TicketDatePick";
 import Button from "./Button";
+import useAddDays from "../hooks/useAddDays";
 
 function ProductDetail({
   sid,
@@ -35,10 +36,15 @@ function ProductDetail({
   price,
   productType = [],
 }) {
+  const addDays = useAddDays;
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState("");
   const [typeSelected, setTypeSelected] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [endDate, setEndDate] = useState(useAddDays(startDate, quantity));
+
+  useEffect(() => {
+    setEndDate(addDays(startDate, quantity));
+  }, [quantity, startDate, addDays]);
 
   const top = useRef(null);
   const introductionRef = useRef(null);
