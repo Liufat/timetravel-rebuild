@@ -34,6 +34,7 @@ function TicketDetail() {
     area_name,
     city_name,
     tickets,
+    comment,
   } = ticketDetail;
 
   const productType = tickets.map((v) => {
@@ -52,6 +53,7 @@ function TicketDetail() {
       category={classname}
       introduction={product_introduction}
       productType={productType}
+      comment={comment}
     />
   );
 }

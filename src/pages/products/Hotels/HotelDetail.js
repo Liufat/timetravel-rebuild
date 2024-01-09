@@ -19,6 +19,7 @@ function HotelDetail() {
     hotel_categories,
     tag,
     room,
+    comment,
   } = hotelDetail;
 
   const productType = room.map((v) => {
@@ -43,6 +44,7 @@ function HotelDetail() {
       hotelDetail={hotelDetail}
       introduction={tag}
       productType={productType}
+      comment={comment}
     />
   );
 }

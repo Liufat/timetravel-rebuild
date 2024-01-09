@@ -196,7 +196,7 @@ function Calander({
               setValue(new Date(yearState, monthState, i + 1));
             }}
             className={
-              value.getDate() === i + 1 || endDate.getDate() >= i + 1
+              value.getDate() === i + 1 || endDate?.getDate() >= i + 1
                 ? "active"
                 : ""
             }
