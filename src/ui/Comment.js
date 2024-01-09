@@ -1,6 +1,8 @@
 import React from "react";
-import { FaRegStar, FaStar } from "react-icons/fa";
 import styled from "styled-components";
+import CommentStar from "./CommentStar";
+import productImg from "./../image/img/hotpot_home.jpeg";
+import moment from "moment";
 
 const StyledCommentCard = styled.div`
   border-top: 1px solid var(--color-grey);
@@ -16,7 +18,14 @@ const StyledRoundImgWrap = styled.div`
   background-repeat: no-repeat;
 `;
 
-function Comment({ userImage }) {
+function Comment({ comment }) {
+  const userImage = productImg;
+  const {
+    username: userName,
+    score,
+    commit_text: commentContent,
+    create_time: createTime,
+  } = comment;
   return (
     <StyledCommentCard className="d-flex flex-column gap-3 mt-3 pt-3">
       <div className="d-flex justify-content-between">
@@ -26,24 +35,20 @@ function Comment({ userImage }) {
             className="col-xl-3"
           />
           <div className="d-flex flex-column col-xl-8">
-            <span>花花</span>
+            <span>{userName}</span>
             <span>
-              <FaStar className="text-color-primary" />
-              <FaStar className="text-color-primary" />
-              <FaStar className="text-color-primary" />
-              <FaStar className="text-color-primary" />
-              <FaRegStar className="text-color-primary" />
+              <CommentStar score={score} className="text-color-primary" />
             </span>
           </div>
         </div>
         <div>
-          <span className="text-color-dark-grey">2022/10/22</span>
+          <span className="text-color-dark-grey">
+            {moment(createTime).format("YYYY-MM-DD")}
+          </span>
         </div>
       </div>
       <div>
-        <p>
-          評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論評論
-        </p>
+        <p>{commentContent}</p>
       </div>
     </StyledCommentCard>
   );

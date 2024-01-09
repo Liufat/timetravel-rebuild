@@ -9,6 +9,8 @@ export const ITEMS_PER_PAGE = 6;
 // 美食總表
 export const GET_FOODS_LIST = `${MY_HOST}/food/api`;
 export const GET_FOOD_DETAIL = `${MY_HOST}/food/item`;
+// 評論
+export const GET_FOOOD_COMMENT = `${MY_HOST}/food/food/detail/commit`;
 
 // 票券總表
 export const GET_TICKETS_LIST = `${MY_HOST}/ticket/api/list`;

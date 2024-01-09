@@ -21,6 +21,7 @@ function FoodDetail() {
     applicable_store: applicableStore,
     p_discounted_price: originalPrice,
     p_selling_price: price,
+    comment,
   } = foodDetail;
   return (
     <ProductDetail
@@ -36,6 +37,7 @@ function FoodDetail() {
       originalPrice={originalPrice}
       price={price}
       sid={sid}
+      comment={comment}
     />
   );
 }

@@ -45,7 +45,7 @@ function Foods() {
               productId={sid}
               img={`${MY_HOST}/uploads/food/${cover}`}
               title={name}
-              star="4.9/5"
+              star={4.9}
               price={price}
             />
           </div>

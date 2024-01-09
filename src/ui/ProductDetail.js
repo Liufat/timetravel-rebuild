@@ -2,8 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import productImg from "./../image/img/hotpot_home.jpeg";
 import { MY_HOST } from "../server/config";
 
-import { FaStar } from "react-icons/fa";
-import { FaRegStar } from "react-icons/fa";
 import { FiMapPin } from "react-icons/fi";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { IoPhonePortraitOutline } from "react-icons/io5";
@@ -20,6 +18,7 @@ import Comment from "./Comment";
 import TicketDatePick from "./TicketDatePick";
 import Button from "./Button";
 import useAddDays from "../hooks/useAddDays";
+import CommentStar from "./CommentStar";
 
 function ProductDetail({
   sid,
@@ -34,6 +33,7 @@ function ProductDetail({
   productName,
   originalPrice,
   price,
+  comment,
   productType = [],
 }) {
   const addDays = useAddDays;
@@ -41,10 +41,20 @@ function ProductDetail({
   const [typeSelected, setTypeSelected] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [endDate, setEndDate] = useState(useAddDays(startDate, quantity));
+  const [showComment, setShowComment] = useState(
+    comment.sort((a, b) => {
+      return new Date(b.create_time) - new Date(a.create_time);
+    })
+  );
 
   useEffect(() => {
     setEndDate(addDays(startDate, quantity));
-  }, [quantity, startDate, addDays]);
+    setShowComment(
+      comment.sort((a, b) => {
+        return new Date(b.create_time) - new Date(a.create_time);
+      })
+    );
+  }, [quantity, startDate, addDays, comment]);
 
   const top = useRef(null);
   const introductionRef = useRef(null);
@@ -120,6 +130,67 @@ function ProductDetail({
     }
   };
 
+  const createCommentDom = () => {
+    if (comment.length === 0) {
+      return (
+        <>
+          <div className="d-flex flex-column gap-3">
+            <h2 ref={commit}>旅客評價</h2>
+            <div className="d-flex justify-content-between">
+              <div className="d-flex align-items-center gap-3 gap-md-5 col-md-6">
+                <h1 className="m-0 text-color-primary">未定</h1>
+                <div className="d-flex flex-column flex-md-row gap-md-5">
+                  <h2>
+                    <CommentStar className={"text-color-primary"} />
+                  </h2>
+                  <p className="m-0 p-0 pt-md-2">暫無評論</p>
+                </div>
+              </div>
+              <div className="col-xl-2">
+                <h2>熱門程度</h2>
+              </div>
+            </div>
+          </div>
+          {/* -------------評論------------------- */}
+          <div className="pt-5">
+            <h1>趕快來成為第一位評論者吧！</h1>
+          </div>
+        </>
+      );
+    } else {
+      const score = (
+        comment.reduce((acc, cur) => acc + cur.score, 0) / comment.length
+      ).toFixed(1);
+      return (
+        <>
+          <div className="d-flex flex-column gap-3">
+            <h2 ref={commit}>旅客評價</h2>
+            <div className="d-flex justify-content-between">
+              <div className="d-flex align-items-center gap-3 gap-md-5 col-md-6">
+                <h1 className="m-0 text-color-primary">{`${score}分`}</h1>
+                <div className="d-flex flex-column flex-md-row gap-md-5">
+                  <h2>
+                    <CommentStar
+                      score={score}
+                      className={"text-color-primary"}
+                    />
+                  </h2>
+                  <p className="m-0 p-0 pt-md-2">{`${comment.length}篇評論`}</p>
+                </div>
+              </div>
+              <div className="col-xl-2">
+                <h2>熱門程度</h2>
+              </div>
+            </div>
+          </div>
+          {/* -------------評論------------------- */}
+          {showComment.map((v) => {
+            return <Comment key={v.sid} comment={v} />;
+          })}
+        </>
+      );
+    }
+  };
   return (
     <>
       <div className="container">
@@ -230,32 +301,7 @@ function ProductDetail({
                     </button>
                   </section>
                   {/* ---------------------------旅客評價--------------------------------- */}
-                  <section>
-                    <div className="d-flex flex-column gap-3">
-                      <h2 ref={commit}>旅客評價</h2>
-                      <div className="d-flex justify-content-between">
-                        <div className="d-flex align-items-center gap-3 gap-md-5 col-md-6">
-                          <h1 className="m-0 text-color-primary">4.3</h1>
-                          <div className="d-flex flex-column flex-md-row gap-md-5">
-                            <h2>
-                              <FaStar className="text-color-primary" />
-                              <FaStar className="text-color-primary" />
-                              <FaStar className="text-color-primary" />
-                              <FaStar className="text-color-primary" />
-                              <FaRegStar className="text-color-primary" />
-                            </h2>
-                            <p className="m-0 p-0 pt-md-2">326篇評論</p>
-                          </div>
-                        </div>
-                        <div className="col-xl-2">
-                          <h2>熱門程度</h2>
-                        </div>
-                      </div>
-                    </div>
-                    {/* -------------評論------------------- */}
-                    <Comment userImage={productImg} />
-                    <Comment userImage={productImg} />
-                  </section>
+                  <section>{createCommentDom()}</section>
                 </div>
               </div>
             </div>

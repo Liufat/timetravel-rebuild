@@ -9,6 +9,7 @@ export const getFoods = async () => {
 
 export const getFoodDetail = async (sid) => {
   const { data } = await axios.get(`${GET_FOOD_DETAIL}/${sid}`);
+  const result = { ...data };
 
-  return data;
+  return result;
 };

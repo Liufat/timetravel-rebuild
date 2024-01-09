@@ -6,6 +6,7 @@ import { MY_HOST } from "../server/config";
 import { CiHeart } from "react-icons/ci";
 import { LuCalendarPlus } from "react-icons/lu";
 import { FaRegStar, FaStar } from "react-icons/fa";
+import CommentStar from "./CommentStar";
 
 const StyledProductBanner = styled.div`
   width: 100%;
@@ -41,11 +42,7 @@ function ProductBanner({ type, image, name }) {
         </div>
         <div className="d-flex flex-column gap-3">
           <h2 className="d-flex align-items-center">
-            <FaStar className="text-color-primary" />
-            <FaStar className="text-color-primary" />
-            <FaStar className="text-color-primary" />
-            <FaStar className="text-color-primary" />
-            <FaRegStar className="text-color-primary" />
+            <CommentStar className={"text-color-primary"} score={4.3} />
             4.3顆星
           </h2>
         </div>

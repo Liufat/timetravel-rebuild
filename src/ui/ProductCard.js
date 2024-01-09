@@ -1,12 +1,8 @@
 import React from "react";
 
-import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
-const StyledStar = styled(FaStar)`
-  fill: var(--color-primary);
-`;
+import CommentStar from "./CommentStar";
 
 const StyledImg = styled.div`
   height: 12rem;
@@ -43,7 +39,7 @@ function ProductCard({
           <span>[即買即用]</span>
           <span className="text-nowrap">{title}</span>
           <div className="d-flex align-items-center gap-1">
-            <StyledStar />
+            <CommentStar score={star} className={"text-color-primary"} />
             <span>{star}</span>
           </div>
         </div>
