@@ -16,12 +16,7 @@ function CartFood() {
       return <CartProductCard key={v.id} type={"food"} item={v} />;
     });
 
-  return (
-    <>
-      {createDom()}
-      <div></div>
-    </>
-  );
+  return <>{createDom()}</>;
 }
 
 export default CartFood;
