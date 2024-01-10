@@ -63,6 +63,10 @@ function ProductDetail({
   const recommend = useRef(null);
   const applicableStores = useRef(null);
 
+  const score = (
+    comment.reduce((acc, cur) => acc + cur.score, 0) / comment.length
+  ).toFixed(1);
+
   const quantityMinusOne = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -109,6 +113,7 @@ function ProductDetail({
             startDate={startDate}
             endDate={endDate}
             image={image}
+            score={score}
           />
         </>
       );
@@ -125,6 +130,7 @@ function ProductDetail({
           quantityPlusOne={quantityPlusOne}
           quantity={quantity}
           image={image}
+          score={score}
         />
       );
     }
@@ -158,9 +164,6 @@ function ProductDetail({
         </>
       );
     } else {
-      const score = (
-        comment.reduce((acc, cur) => acc + cur.score, 0) / comment.length
-      ).toFixed(1);
       return (
         <>
           <div className="d-flex flex-column gap-3">

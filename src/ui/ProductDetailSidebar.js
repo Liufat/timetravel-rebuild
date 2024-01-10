@@ -21,6 +21,7 @@ function ProductDetailSidebar({
   startDate,
   endDate,
   image,
+  score,
 }) {
   const { addCart } = useCart();
 
@@ -35,6 +36,7 @@ function ProductDetailSidebar({
       quantity,
       startDate: moment(startDate).format("YYYY-MM-DD"),
       endDate: moment(endDate).format("YYYY-MM-DD"),
+      score,
     });
   };
 
