@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ImCross } from "react-icons/im";
 import Button from "./Button";
 import moment from "moment";
@@ -7,28 +7,28 @@ import Input from "./Input";
 import TicketCount from "./TicketCount";
 import useAddDays from "../hooks/useAddDays";
 import useCountDay from "../hooks/useCountDay";
+import CommentStar from "./CommentStar";
 
 function CartProductCard({ item, type }) {
   const countDay = useCountDay;
-  const { quantityPlusOne, quantityMinusOne, editCart } = useCart();
+  const addDays = useAddDays;
+
+  const { startDate, endDate, quantity, image, productName, score } = item;
+  const { quantityPlusOne, quantityMinusOne, editCart, removeCart } = useCart();
 
   const [dayCount, setDayCount] = useState(
     countDay(item.startDate, item.endDate)
   );
-
-  const { startDate, endDate, quantity, image, productName } = item;
 
   useEffect(() => {
     const countDayResult = countDay(startDate, endDate);
     setDayCount(countDayResult);
   }, [startDate, endDate, countDay]);
 
-  if (item.quantity !== dayCount) {
-    editCart(item, { quantity: dayCount });
-  }
-
-  const addDays = useAddDays;
-  const createHotelDom = () => {
+  const createHotelDatepick = () => {
+    if (item.quantity !== dayCount) {
+      editCart(item, { quantity: dayCount });
+    }
     return (
       <>
         <Button className="btn-primary text-color-white my-3 py-2 px-3">
@@ -72,60 +72,114 @@ function CartProductCard({ item, type }) {
     );
   };
 
-  const createTicketCountDom = () => {
-    if (type === "food" || type === "ticket") {
-      return (
-        <TicketCount
-          className={"col-2"}
-          quantity={quantity}
-          plus={() => {
-            quantityPlusOne(item);
-          }}
-          minus={() => {
-            quantityMinusOne(item);
-          }}
-        />
-      );
-    }
-    return;
-  };
-
-  const { removeCart } = useCart();
-  return (
-    <div className="d-flex justify-content-between py-5 border-top">
-      <div className="col-8">
-        <div className="d-flex gap-3">
-          <div
-            style={{
-              backgroundImage: `url(${image})`,
-              width: "50px",
-              height: "50px",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              borderRadius: "50% 50%",
-            }}
-          ></div>
+  const createTicketDatepick = () => {
+    return (
+      <>
+        <Button className="btn-primary text-color-white my-3 py-2 px-3">
+          {item.chozenType}
+        </Button>
+        <div className="d-flex my-3 gap-3">
           <div>
-            <p>{productName}</p>
-            <p>4.3顆星</p>
+            <Input
+              value={item.startDate}
+              inputType="date"
+              type={"date"}
+              label={"startDate"}
+              min={moment().format("YYYY-MM-DD")}
+              max={endDate}
+              onChange={(e) => {
+                editCart(item, { startDate: e.target.value });
+              }}
+            >
+              入住時間
+            </Input>
           </div>
         </div>
-        {type === "hotel" && createHotelDom()}
-      </div>
-      {createTicketCountDom()}
-      <button
-        className="col-1 d-flex justify-content-end"
-        style={{ backgroundColor: "transparent" }}
-        onClick={() => {
-          removeCart(item);
+      </>
+    );
+  };
+
+  const createDatepickByType = () => {
+    if (type === "hotel") {
+      return createHotelDatepick();
+    }
+    if (type === "ticket") {
+      return createTicketDatepick();
+    }
+  };
+
+  const createCount = () => {
+    return (
+      <TicketCount
+        className={"col-2"}
+        quantity={quantity}
+        plus={() => {
+          quantityPlusOne(item);
         }}
-      >
-        <h2 className="d-flex">
-          <ImCross className="text-color-black" />
-        </h2>
-      </button>
-    </div>
-  );
+        minus={() => {
+          quantityMinusOne(item);
+        }}
+      />
+    );
+  };
+
+  const createCountByType = () => {
+    if (type === "food" || type === "ticket") {
+      return createCount();
+    }
+  };
+
+  const createDom = () => {
+    return (
+      <div className="d-flex justify-content-between py-5 border-top">
+        <div className="col-8">
+          <div className="d-flex gap-3">
+            <div
+              style={{
+                backgroundImage: `url(${image})`,
+                width: "50px",
+                height: "50px",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+                borderRadius: "50% 50%",
+              }}
+            ></div>
+            <div>
+              <p>{productName}</p>
+              <div className="d-flex align-items-center">
+                {isNaN(score) ? (
+                  <p>暫無評價</p>
+                ) : (
+                  <>
+                    <CommentStar
+                      score={score}
+                      className={"text-color-primary"}
+                    />
+                    <p>{`${score}顆星`}</p>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+          {createDatepickByType()}
+        </div>
+        {createCountByType()}
+        <button
+          className="col-1 d-flex justify-content-end"
+          style={{ backgroundColor: "transparent" }}
+          onClick={() => {
+            removeCart(item);
+          }}
+        >
+          <h2 className="d-flex">
+            <ImCross className="text-color-black" />
+          </h2>
+        </button>
+      </div>
+    );
+  };
+
+  return createDom();
 }
 
 export default CartProductCard;
