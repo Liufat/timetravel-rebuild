@@ -12,7 +12,7 @@ function CartPageProvider({ children }) {
   const cartPageReducer = (state, action) => {
     switch (action.type) {
       case "NEXT_PAGE":
-        if (state.nowPage < state.allPage.length) {
+        if (state.nowPage < state.allPages.length) {
           return { ...state, nowPage: state.nowPage + 1 };
         }
         return { ...state };
@@ -35,9 +35,21 @@ function CartPageProvider({ children }) {
     dispatch({ type: "SELECT_PAGE", payload: page });
   };
 
+  const nextPage = () => {
+    dispatch({ type: "NEXT_PAGE" });
+  };
+  const prePage = () => {
+    dispatch({ type: "PRE_PAGE" });
+  };
+
   return (
     <CarPageContext.Provider
-      value={{ cartPageState: state, selectPage: selectPage }}
+      value={{
+        cartPageState: state,
+        selectPage: selectPage,
+        nextPage: nextPage,
+        prePage: prePage,
+      }}
     >
       {children}
     </CarPageContext.Provider>

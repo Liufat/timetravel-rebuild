@@ -47,7 +47,7 @@ function CartProductCard({ item, type }) {
                 editCart(item, { startDate: e.target.value });
               }}
             >
-              入住時間
+              入住日期
             </Input>
           </div>
           <div>
@@ -61,7 +61,7 @@ function CartProductCard({ item, type }) {
                 editCart(item, { endDate: e.target.value });
               }}
             >
-              退房時間
+              退房日期
             </Input>
           </div>
           <div className="d-flex align-items-end">
@@ -91,7 +91,7 @@ function CartProductCard({ item, type }) {
                 editCart(item, { startDate: e.target.value });
               }}
             >
-              入住時間
+              使用日期
             </Input>
           </div>
         </div>
@@ -107,7 +107,6 @@ function CartProductCard({ item, type }) {
       return createTicketDatepick();
     }
   };
-
   const createCount = () => {
     return (
       <TicketCount

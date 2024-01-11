@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../../context/CartContext";
 import CartProductCard from "../../ui/CartProductCard";
+import CartButton from "./CartButton";
 
 function CartHotel() {
   const { cartState } = useCart();
@@ -12,10 +13,21 @@ function CartHotel() {
     setCartHotel(cartHotelObject);
   }, [cartState.cartItems]);
 
-  const createDom = () =>
+  const createCartHotel = () =>
     cartHotel.map((v) => {
       return <CartProductCard key={v.id} type={"hotel"} item={v} />;
     });
+
+  const createDom = () => {
+    return (
+      <>
+        {createCartHotel()}
+        <div className="d-flex justify-content-center gap-5">
+          <CartButton />
+        </div>
+      </>
+    );
+  };
 
   return (
     <>
