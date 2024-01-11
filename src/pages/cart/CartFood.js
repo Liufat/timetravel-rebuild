@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useCart } from "../../context/CartContext";
 import CartProductCard from "../../ui/CartProductCard";
-import Button from "../../ui/Button";
 import CartButton from "./CartButton";
+import Loading from "../../ui/Loading";
 
 function CartFood() {
   const { cartState } = useCart();
-  const [cartFood, setCartFood] = useState([]);
+  const [cartFood, setCartFood] = useState({ cartItems: [], isLoading: true });
   useEffect(() => {
     const cartFoodObject = cartState.cartItems.filter((item) => {
       return item.type === "food";
     });
-    setCartFood(cartFoodObject);
+    setCartFood({ cartItems: cartFoodObject, isLoading: false });
   }, [cartState.cartItems]);
 
   const createCartFood = () =>
-    cartFood.map((v) => {
+    cartFood.cartItems.map((v) => {
       return <CartProductCard key={v.id} type={"food"} item={v} />;
     });
 
   const createDom = () => {
+    if (cartFood.isLoading) {
+      return <Loading />;
+    }
     return (
       <>
         {createCartFood()}

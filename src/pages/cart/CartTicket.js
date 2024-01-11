@@ -2,23 +2,30 @@ import React, { useEffect, useState } from "react";
 import CartProductCard from "../../ui/CartProductCard";
 import { useCart } from "../../context/CartContext";
 import CartButton from "./CartButton";
+import Loading from "../../ui/Loading";
 
 function CartTicket() {
   const { cartState } = useCart();
-  const [cartTicket, setCartTicket] = useState([]);
+  const [cartTicket, setCartTicket] = useState({
+    cartItems: [],
+    isLoading: true,
+  });
   useEffect(() => {
     const cartTicketObject = cartState.cartItems.filter((item) => {
       return item.type === "ticket";
     });
-    setCartTicket(cartTicketObject);
+    setCartTicket({ cartItems: cartTicketObject, isLoading: false });
   }, [cartState.cartItems]);
 
   const createCartTicket = () =>
-    cartTicket.map((v) => {
+    cartTicket.cartItems.map((v) => {
       return <CartProductCard key={v.id} type={"ticket"} item={v} />;
     });
 
   const createDom = () => {
+    if (cartTicket.isLoading) {
+      return <Loading />;
+    }
     return (
       <>
         {createCartTicket()}
