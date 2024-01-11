@@ -198,6 +198,10 @@ a {
     }
   }
 
+  .text-bold {
+    font-weight:500;
+  }
+
 `;
 
 export default GlobalStyles;

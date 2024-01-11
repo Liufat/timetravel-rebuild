@@ -35,9 +35,9 @@ function CartSidebar({ className }) {
   const createSidebarCardTitle = (items, type) => {
     return (
       <>
-        {type === "hotel" && <p>住宿</p>}
-        {type === "food" && <p>美食</p>}
-        {type === "ticket" && <p>票券</p>}
+        {type === "hotel" && <p className="text-bold">住宿</p>}
+        {type === "food" && <p className="text-bold">美食</p>}
+        {type === "ticket" && <p className="text-bold">票券</p>}
         {createSidebarContent(items, type)}
       </>
     );
@@ -53,8 +53,8 @@ function CartSidebar({ className }) {
         <div className="px-3 py-4">
           {createSidebarCardTitle(items, type)}
           <div className="my-3 border-top py-3 pe-3 d-flex justify-content-between">
-            <span>小計</span>
-            <span>{`TWD$${totalPrice}`}</span>
+            <span className="text-bold">小計</span>
+            <span className="text-color-primary text-bold">{`TWD$${totalPrice}`}</span>
           </div>
         </div>
       </>
