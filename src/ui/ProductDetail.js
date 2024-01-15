@@ -137,62 +137,39 @@ function ProductDetail({
   };
 
   const createCommentDom = () => {
-    if (comment.length === 0) {
-      return (
-        <>
-          <div className="d-flex flex-column gap-3">
-            <h2 ref={commit}>旅客評價</h2>
-            <div className="d-flex justify-content-between">
-              <div className="d-flex align-items-center gap-3 gap-md-5 col-md-6">
-                <h1 className="m-0 text-color-primary">未定</h1>
-                <div className="d-flex flex-column flex-md-row gap-md-5">
-                  <h2>
-                    <CommentStar className={"text-color-primary"} />
-                  </h2>
-                  <p className="m-0 p-0 pt-md-2">暫無評論</p>
-                </div>
-              </div>
-              <div className="col-xl-2">
-                <h2>熱門程度</h2>
+    return (
+      <>
+        <div className="d-flex flex-column gap-3">
+          <h2 ref={commit}>旅客評價</h2>
+          <div className="d-flex justify-content-between">
+            <div className="d-flex align-items-center gap-3 gap-md-5 col-md-6 text-nowrap">
+              <h1 className="m-0 text-color-primary ">
+                {comment.length === 0 ? "未定" : `${score}分`}
+              </h1>
+              <div className="d-flex flex-column flex-md-row gap-md-5">
+                <h2>
+                  <CommentStar score={score} className={"text-color-primary"} />
+                </h2>
+                <p className="m-0 p-0 pt-md-2">{`${comment.length}篇評論`}</p>
               </div>
             </div>
+            <div className="col-xl-2">
+              <h2>熱門程度</h2>
+            </div>
           </div>
-          {/* -------------評論------------------- */}
+        </div>
+        {/* -------------評論------------------- */}
+        {comment.length === 0 ? (
           <div className="pt-5">
             <h1>趕快來成為第一位評論者吧！</h1>
           </div>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <div className="d-flex flex-column gap-3">
-            <h2 ref={commit}>旅客評價</h2>
-            <div className="d-flex justify-content-between">
-              <div className="d-flex align-items-center gap-3 gap-md-5 col-md-6">
-                <h1 className="m-0 text-color-primary">{`${score}分`}</h1>
-                <div className="d-flex flex-column flex-md-row gap-md-5">
-                  <h2>
-                    <CommentStar
-                      score={score}
-                      className={"text-color-primary"}
-                    />
-                  </h2>
-                  <p className="m-0 p-0 pt-md-2">{`${comment.length}篇評論`}</p>
-                </div>
-              </div>
-              <div className="col-xl-2">
-                <h2>熱門程度</h2>
-              </div>
-            </div>
-          </div>
-          {/* -------------評論------------------- */}
-          {showComment.map((v) => {
+        ) : (
+          showComment.map((v) => {
             return <Comment key={v.sid} comment={v} />;
-          })}
-        </>
-      );
-    }
+          })
+        )}
+      </>
+    );
   };
   return (
     <>
