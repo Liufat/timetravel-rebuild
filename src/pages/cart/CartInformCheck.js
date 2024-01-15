@@ -5,16 +5,46 @@ import CartButton from "./CartButton";
 import { useCart } from "../../context/CartContext";
 import useCartFilter from "../../hooks/useCartFilter";
 import CartSidebar from "./CartSidebar";
+import { useMutation } from "@tanstack/react-query";
+import { makeOrder } from "../../server/cartApi";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import moment from "moment";
 
 function CartInformCheck() {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
+  const { sid: member_sid } = useLocalStorage.get("member");
+  const { cartState } = useCart();
+  const cartFilter = useCartFilter;
+
+  // console.log(cartData);
+  const { mutate, isLoading } = useMutation({
+    mutationFn: makeOrder,
+    onSuccess: () => {
+      console.log("success");
+    },
+    onError: (err) => console.error(err.message),
+  });
 
   const createCheck = () => {
     return <CartSidebar />;
   };
 
   const onSubmit = () => {
-    console.log("submit");
+    const cartData = {
+      order: {
+        member_sid,
+        orders_total_price: cartState.cartItems.reduce(
+          (acc, cur) => acc + cur.price * cur.quantity,
+          0
+        ),
+        repName: "生日哥",
+        repMobile: "0912345678",
+      },
+      hotel: cartFilter(cartState, "hotel") || [],
+      food: cartFilter(cartState, "food") || [],
+      ticket: cartFilter(cartState, "ticket") || [],
+    };
+    mutate(cartData);
   };
 
   const createForm = () => {
