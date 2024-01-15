@@ -11,7 +11,7 @@ function Cart() {
 
   const createDom = () => {
     if (allPages[nowPage] === "資料確認" || allPages[nowPage] === "結帳") {
-      return <CartBody className="py-5" />;
+      return <CartBody className="py-5 w-100" />;
     } else {
       return (
         <>

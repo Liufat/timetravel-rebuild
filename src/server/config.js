@@ -22,3 +22,6 @@ export const GET_HOTEL_DETAIL = `${MY_HOST}/hotel/item`;
 
 // 行程總表
 export const GET_SITES_LIST = `${MY_HOST}/site/api/list`;
+
+// 訂單
+export const MAKE_ORDER = `${MY_HOST}/cart/api/makeorder`;
