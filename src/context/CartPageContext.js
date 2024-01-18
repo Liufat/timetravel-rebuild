@@ -1,8 +1,11 @@
 import { createContext, useContext, useReducer } from "react";
+import { useCart } from "./CartContext";
 
 const CarPageContext = createContext();
 
 function CartPageProvider({ children }) {
+  const { cartFoodState } = useCart();
+  console.log(cartFoodState);
   //顯示購物車用的context
   const initialCartPage = {
     allPages: ["住宿", "美食", "票券", "資料確認", "結帳"],

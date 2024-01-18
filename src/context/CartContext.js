@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import useCartFilter from "../hooks/useCartFilter";
 
 const CartContext = createContext();
 
@@ -141,11 +142,17 @@ function CartProvider({ children }) {
       payload: { targetItem: targetItem, changingTarget: changingTarget },
     });
   };
+  const cartFoodState = useCartFilter(state, "food") || [];
+  const cartHotelState = useCartFilter(state, "hotel") || [];
+  const cartTicketState = useCartFilter(state, "ticket") || [];
 
   return (
     <CartContext.Provider
       value={{
         cartState: state,
+        cartFoodState,
+        cartHotelState,
+        cartTicketState,
         addCart: addCart,
         removeCart: removeCart,
         editCart: editCart,

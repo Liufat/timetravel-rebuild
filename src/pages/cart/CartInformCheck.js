@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "../../ui/Input";
 import CartButton from "./CartButton";
@@ -8,11 +8,18 @@ import CartSidebar from "./CartSidebar";
 import { useMutation } from "@tanstack/react-query";
 import { makeOrder } from "../../server/cartApi";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import moment from "moment";
+import { useCartPage } from "../../context/CartPageContext";
 
 function CartInformCheck() {
   const { register, handleSubmit, reset, getValues, formState } = useForm();
+  const { nextPage } = useCartPage();
   const { sid: member_sid } = useLocalStorage.get("member");
+
+  const [repName, setNepName] = useState("");
+  const [repMobile, setRepMobile] = useState("");
+  const [repEmail, setRepEmail] = useState("");
+  const [repID, setRepID] = useState("");
+
   const { cartState } = useCart();
   const cartFilter = useCartFilter;
 
@@ -37,14 +44,15 @@ function CartInformCheck() {
           (acc, cur) => acc + cur.price * cur.quantity,
           0
         ),
-        repName: "生日哥",
-        repMobile: "0912345678",
+        repName,
+        repMobile,
       },
       hotel: cartFilter(cartState, "hotel") || [],
       food: cartFilter(cartState, "food") || [],
       ticket: cartFilter(cartState, "ticket") || [],
     };
-    mutate(cartData);
+    // mutate(cartData);
+    nextPage();
   };
 
   const createForm = () => {
@@ -56,36 +64,40 @@ function CartInformCheck() {
             <div className="d-flex flex-column gap-4 p-3">
               <div className="d-flex gap-5">
                 <Input
-                  inputType="form"
-                  label="contactor"
+                  inputType="text"
+                  label="repName"
+                  value={repName}
+                  onChange={setNepName}
                   placeholder="請輸入姓名"
-                  register={register}
                 >
                   訂單聯絡人
                 </Input>
                 <Input
-                  inputType="form"
-                  label="mobileNumber"
+                  inputType="text"
+                  label="repMobile"
                   placeholder="請輸入正確的電話號碼"
-                  register={register}
+                  value={repMobile}
+                  onChange={setRepMobile}
                 >
                   手機號碼
                 </Input>
               </div>
               <div className="d-flex gap-5">
                 <Input
-                  inputType="form"
-                  label="email"
+                  inputType="text"
+                  label="repEmail"
                   placeholder="example@mail.com"
-                  register={register}
+                  value={repEmail}
+                  onChange={setRepEmail}
                 >
                   Email
                 </Input>
                 <Input
-                  inputType="form"
-                  label="id"
+                  inputType="text"
+                  label="repID"
                   placeholder="外籍人士請輸入護照號碼"
-                  register={register}
+                  value={repID}
+                  onChange={setRepID}
                 >
                   身分證字號/護照號碼
                 </Input>

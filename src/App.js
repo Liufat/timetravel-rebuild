@@ -49,8 +49,8 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <>
-      <CartPageProvider>
-        <CartProvider>
+      <CartProvider>
+        <CartPageProvider>
           <SearchProvider>
             <MemberProvider>
               <QueryClientProvider client={queryClient}>
@@ -119,8 +119,8 @@ function App() {
               </QueryClientProvider>
             </MemberProvider>
           </SearchProvider>
-        </CartProvider>
-      </CartPageProvider>
+        </CartPageProvider>
+      </CartProvider>
     </>
   );
 }
