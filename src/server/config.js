@@ -24,4 +24,23 @@ export const GET_HOTEL_DETAIL = `${MY_HOST}/hotel/item`;
 export const GET_SITES_LIST = `${MY_HOST}/site/api/list`;
 
 // 訂單
-export const MAKE_ORDER = `${MY_HOST}/cart/api/makeorder`;
+export const MAKE_ORDER_API = `${MY_HOST}/cart/api/makeorder`;
+
+//結帳流程
+//獲取指定訂單編號的資料-LINE PAY
+export const LINE_PAY_API = function (paymentId) {
+  return `${MY_HOST}/pay/api/paylist/${paymentId}`;
+};
+//確認訂單是否結帳成功
+export const LINE_PAY_CONFIRM_API = `${MY_HOST}/pay/api/paycheck`;
+
+//獲取指定訂單編號的資料-綠界
+export const ECPAY_API = function (paymentId) {
+  return `${MY_HOST}/pay/api/ecpay/${paymentId}`;
+};
+
+//更改訂單付款狀態
+export const CHANGE_PAY_API = `${MY_HOST}/pay/api/change-pay`;
+
+// 收取綠界api回報的付款狀態
+export const CHANGE_ECPAY_API = `${MY_HOST}/pay/api/ecpay-change-state`;

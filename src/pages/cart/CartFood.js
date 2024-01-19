@@ -5,19 +5,26 @@ import CartButton from "./CartButton";
 import Loading from "../../ui/Loading";
 
 function CartFood() {
-  const { cartState } = useCart();
+  const { cartFoodState } = useCart();
+
   const [cartFood, setCartFood] = useState({ cartItems: [], isLoading: true });
   useEffect(() => {
-    const cartFoodObject = cartState.cartItems.filter((item) => {
-      return item.type === "food";
-    });
-    setCartFood({ cartItems: cartFoodObject, isLoading: false });
-  }, [cartState.cartItems]);
+    setCartFood({ cartItems: cartFoodState, isLoading: false });
+  }, [cartFoodState]);
 
-  const createCartFood = () =>
-    cartFood.cartItems.map((v) => {
-      return <CartProductCard key={v.id} type={"food"} item={v} />;
-    });
+  const createCartFood = () => {
+    if (cartFood.cartItems.length === 0) {
+      return (
+        <div className="d-flex w-100 justify-content-center py-5">
+          <h1 className="m-3">您的美食購物車是空的喔！</h1>
+        </div>
+      );
+    } else {
+      return cartFood.cartItems.map((v) => {
+        return <CartProductCard key={v.id} type={"food"} item={v} />;
+      });
+    }
+  };
 
   const createDom = () => {
     if (cartFood.isLoading) {

@@ -37,6 +37,7 @@ import { MemberProvider } from "./context/MemberContext";
 import { SearchProvider } from "./context/SearchContext";
 import { CartProvider } from "./context/CartContext";
 import { CartPageProvider } from "./context/CartPageContext";
+import LinepayConfirm from "./pages/cart/LinepayConfirm";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -112,6 +113,7 @@ function App() {
                       <Route path="success" element={<Success />} />
                       <Route path="fail" element={<Fail />} />
                     </Route>
+                    <Route path="linepayconfirm" element={<LinepayConfirm />} />
 
                     <Route path="*" element={<PageNotFound />} />
                   </Routes>

@@ -5,7 +5,6 @@ import { MY_HOST } from "../server/config";
 
 import { CiHeart } from "react-icons/ci";
 import { LuCalendarPlus } from "react-icons/lu";
-import { FaRegStar, FaStar } from "react-icons/fa";
 import CommentStar from "./CommentStar";
 
 const StyledProductBanner = styled.div`

@@ -156,6 +156,32 @@ a {
     }
     
   }
+
+  .btn{
+    border: none;
+    color: var(--color-white);
+    &.btn-primary{
+     background-color: var(--color-primary);
+     &:hover,&:active,&:focus{
+      background-color: var(--color-primary);
+    }
+    &.active{
+      background-color: var(--color-secondary);
+    }
+    }
+    &.btn-secondary{
+     background-color: var(--color-secondary);
+    }
+    &.btn-transparent{
+     background-color: transparent;
+     border: 1px solid var(--color-white);
+    }
+    &.btn-transparent-primary{
+     background-color: transparent;
+     border: 1px solid var(--color-primary);
+     color:var(--color-primary)
+    }
+  }
   
   svg{
     &.fill-primary{

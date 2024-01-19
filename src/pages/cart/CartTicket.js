@@ -5,22 +5,28 @@ import CartButton from "./CartButton";
 import Loading from "../../ui/Loading";
 
 function CartTicket() {
-  const { cartState } = useCart();
+  const { cartTicketState } = useCart();
   const [cartTicket, setCartTicket] = useState({
     cartItems: [],
     isLoading: true,
   });
   useEffect(() => {
-    const cartTicketObject = cartState.cartItems.filter((item) => {
-      return item.type === "ticket";
-    });
-    setCartTicket({ cartItems: cartTicketObject, isLoading: false });
-  }, [cartState.cartItems]);
+    setCartTicket({ cartItems: cartTicketState, isLoading: false });
+  }, [cartTicketState]);
 
-  const createCartTicket = () =>
-    cartTicket.cartItems.map((v) => {
-      return <CartProductCard key={v.id} type={"ticket"} item={v} />;
-    });
+  const createCartTicket = () => {
+    if (cartTicket.cartItems.length === 0) {
+      return (
+        <div className="d-flex w-100 justify-content-center py-5">
+          <h1 className="m-3">您的票券購物車是空的喔！</h1>
+        </div>
+      );
+    } else {
+      return cartTicket.cartItems.map((v) => {
+        return <CartProductCard key={v.id} type={"ticket"} item={v} />;
+      });
+    }
+  };
 
   const createDom = () => {
     if (cartTicket.isLoading) {

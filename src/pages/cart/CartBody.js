@@ -19,10 +19,8 @@ function CartBody({ className }) {
         return <CartFood />;
       case "票券":
         return <CartTicket />;
-      case "資料確認":
-        return <CartInformCheck />;
       case "結帳":
-        return <CartPay />;
+        return <CartInformCheck />;
       default:
         throw new Error("頁面不存在，請聯絡客服人員");
     }

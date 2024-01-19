@@ -22,17 +22,11 @@ function TicketDetail() {
   // price,
   const {
     product_name,
-    product_describe,
     product_introduction,
-    product_notice,
-    start_day,
-    end_day,
     product_cover,
-    product_imgs,
     address,
     classname,
     area_name,
-    city_name,
     tickets,
     comment,
   } = ticketDetail;

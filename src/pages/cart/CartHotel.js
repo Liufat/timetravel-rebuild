@@ -5,23 +5,28 @@ import CartButton from "./CartButton";
 import Loading from "../../ui/Loading";
 
 function CartHotel() {
-  const { cartState } = useCart();
+  const { cartHotelState } = useCart();
   const [cartHotel, setCartHotel] = useState({
     cartItems: [],
     isLoading: true,
   });
   useEffect(() => {
-    const cartHotelObject = cartState.cartItems.filter((item) => {
-      return item.type === "hotel";
-    });
-    setCartHotel({ cartItems: cartHotelObject, isLoading: false });
-  }, [cartState.cartItems]);
+    setCartHotel({ cartItems: cartHotelState, isLoading: false });
+  }, [cartHotelState]);
 
-  const createCartHotel = () =>
-    cartHotel.cartItems.map((v) => {
-      return <CartProductCard key={v.id} type={"hotel"} item={v} />;
-    });
-
+  const createCartHotel = () => {
+    if (cartHotel.cartItems.length === 0) {
+      return (
+        <div className="d-flex w-100 justify-content-center py-5">
+          <h1 className="m-3">您的住宿購物車是空的喔！</h1>
+        </div>
+      );
+    } else {
+      return cartHotel.cartItems.map((v) => {
+        return <CartProductCard key={v.id} type={"hotel"} item={v} />;
+      });
+    }
+  };
   const createDom = () => {
     if (cartHotel.isLoading) {
       return <Loading />;

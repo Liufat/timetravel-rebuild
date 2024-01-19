@@ -2,7 +2,7 @@ import React from "react";
 import { useCartPage } from "../../context/CartPageContext";
 import Button from "../../ui/Button";
 
-function CartButton({ onSubmit }) {
+function CartButton({ onSubmit, isLoading }) {
   const { cartPageState, prePage, nextPage } = useCartPage();
 
   const createButton = (content, onClick) => {
@@ -24,7 +24,7 @@ function CartButton({ onSubmit }) {
           {createButton("下一頁", nextPage)}
         </>
       );
-    } else if (nowPage === allPages.findIndex((page) => page === "資料確認")) {
+    } else if (nowPage === allPages.findIndex((page) => page === "結帳")) {
       return (
         <>
           {createButton("上一頁", prePage)}
