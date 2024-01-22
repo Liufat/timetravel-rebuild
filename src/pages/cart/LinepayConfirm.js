@@ -9,9 +9,9 @@ function LinepayConfirm() {
   const checkPay = async () => {
     const result = await axios.post(LINE_PAY_CONFIRM_API, query);
     if (result.data === "success") {
-      window.location = "http://localhost:3000/cart/success";
+      window.location = "http://localhost:3000/success";
     } else {
-      window.location = "http://localhost:3000/cart/fail";
+      window.location = "http://localhost:3000/fail";
     }
   };
 

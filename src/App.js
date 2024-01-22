@@ -109,7 +109,7 @@ function App() {
                       <Route path="cart" element={<Cart />} />
                     </Route>
 
-                    <Route path="checkout" element={<CheckOutLayout />}>
+                    <Route element={<CheckOutLayout />}>
                       <Route path="success" element={<Success />} />
                       <Route path="fail" element={<Fail />} />
                     </Route>

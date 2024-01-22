@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useCallback, useEffect } from "react";
 import CartHeader from "./CartHeader";
 import CartSidebar from "./CartSidebar";
 import CartBody from "./CartBody";
 import { useCartPage } from "../../context/CartPageContext";
 
 function Cart() {
-  const { cartPageState } = useCartPage();
+  const { cartPageState, selectPage } = useCartPage();
 
   const { allPages, nowPage } = cartPageState;
 
+  useEffect(() => {
+    selectPage(0);
+  }, []);
   const createDom = () => {
     if (allPages[nowPage] === "結帳") {
       return <CartBody className="py-5 w-100" />;
