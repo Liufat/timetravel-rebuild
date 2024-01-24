@@ -42,5 +42,9 @@ export const ECPAY_API = function (paymentId) {
 //更改訂單付款狀態
 export const CHANGE_PAY_API = `${MY_HOST}/pay/api/change-pay`;
 
-// 收取綠界api回報的付款狀態
+//收取綠界api回報的付款狀態
 export const CHANGE_ECPAY_API = `${MY_HOST}/pay/api/ecpay-change-state`;
+
+//訂單
+export const GET_ORDERS = `${MY_HOST}/orders/api/list`;
+export const GET_ORDER_DETAIL = `${MY_HOST}/orders/api/list/orderdetail`;
