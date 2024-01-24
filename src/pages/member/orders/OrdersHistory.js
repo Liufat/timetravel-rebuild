@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useOrderDetail } from "./useOrderDetail";
 import moment from "moment";
 import Loading from "../../../ui/Loading";
 import Accordion from "../../../ui/Accordion";
 import Button from "../../../ui/Button";
+import Pages from "../../../ui/Pages";
+import useCountPages from "../../../hooks/useCountPages";
+import { ITEMS_PER_PAGE } from "../../../server/config";
 
 function OrdersHistory({ orders }) {
   const title = ["商品名稱", "商品單價", "商品數量", "小計", "評價"];
 
   const getDetail = useOrderDetail;
+  const [nowPage, setNowPage] = useState(1);
+  const { items, totalPages } = useCountPages(orders, ITEMS_PER_PAGE, nowPage);
 
   return (
     <div>
@@ -18,7 +23,7 @@ function OrdersHistory({ orders }) {
           <h2 className="col-4">訂單編號</h2>
           <h2 className="col-4">訂單總價</h2>
         </div>
-        {orders.map((order) => {
+        {items.map((order) => {
           const surface = {
             date: moment(order.orders_created_time).format("YYYY/MM/DD"),
             paymentId: order.uuid,
@@ -54,6 +59,13 @@ function OrdersHistory({ orders }) {
             </Accordion>
           );
         })}
+        <div className="col-4 py-3 d-flex w-100 justify-content-center">
+          <Pages
+            nowPage={nowPage}
+            setNowPage={setNowPage}
+            totalPages={totalPages}
+          />
+        </div>
       </div>
     </div>
   );
