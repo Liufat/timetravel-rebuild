@@ -17,17 +17,17 @@ function OrdersDetail({ ordersSelected }) {
   const ordersRecent = orders.filter((order) => {
     return (
       +new Date() - +new Date(order.orders_created_time) <
-        30 * 24 * 60 * 60 * 1000 && order.orders_status_sid === 2
+        30 * 24 * 60 * 60 * 1000 && order.orders_status_sid === 1
     );
   });
   const ordersHistory = orders.filter((order) => {
     return (
       +new Date() - +new Date(order.orders_created_time) >=
-        30 * 24 * 60 * 60 * 1000 && order.orders_status_sid === 2
+        30 * 24 * 60 * 60 * 1000 && order.orders_status_sid === 1
     );
   });
   const ordersUndone = orders.filter((order) => {
-    return order.orders_status_sid === 1;
+    return order.orders_status_sid === 2;
   });
 
   const createOrdersRecent = () => {
