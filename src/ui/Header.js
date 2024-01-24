@@ -62,6 +62,7 @@ const StyledDropdown = styled.div`
   height: 400px;
   background-color: var(--color-white);
   top: 50px;
+  z-index: 99;
 `;
 const StyledDropdownRWD = styled.div`
   width: 120px;
