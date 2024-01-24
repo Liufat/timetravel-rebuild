@@ -7,15 +7,7 @@ import Loading from "../../../ui/Loading";
 
 function OrdersRecent({ orders }) {
   const title = ["商品名稱", "商品單價", "商品數量", "小計", "評價"];
-  // const content = [
-  //   {
-  //     name: "JR東日本大飯店",
-  //     price: 599,
-  //     quantity: 2,
-  //     totalPrice: 1198,
-  //     commentState: false,
-  //   },
-  // ];
+
   const getDetail = useOrderDetail;
 
   return (
@@ -27,11 +19,11 @@ function OrdersRecent({ orders }) {
           <h2 className="col-4">訂單總價</h2>
         </div>
         {orders.map((order) => {
-          const surface = [
-            moment(order.orders_created_time).format("YYYY/MM/DD"),
-            order.uuid,
-            order.orders_total_price,
-          ];
+          const surface = {
+            date: moment(order.orders_created_time).format("YYYY/MM/DD"),
+            paymentId: order.uuid,
+            paymentTotalPrice: order.orders_total_price,
+          };
           const { orderDetail, isLoading } = getDetail(order.uuid);
           if (isLoading) return <Loading key={order.uuid} />;
           return (
@@ -63,7 +55,6 @@ function OrdersRecent({ orders }) {
           );
         })}
       </div>
-      <div></div>
     </div>
   );
 }

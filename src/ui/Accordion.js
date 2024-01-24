@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { GoTriangleDown } from "react-icons/go";
+import Button from "./Button";
 
 const Icon = styled.span`
   position: absolute;
@@ -26,6 +27,11 @@ const StyleAccordionbody = styled.div`
 
 function Accordion({ surface, title, children }) {
   const [show, setShow] = useState(false);
+  const length = Object.keys(surface).length;
+
+  const createRepayButton = () => {
+    return <Button className={"py-1 px-3 btn-secondary"}>付款</Button>;
+  };
 
   return (
     <>
@@ -36,11 +42,23 @@ function Accordion({ surface, title, children }) {
         <Icon className={`${show ? "" : "fold"}`}>
           <GoTriangleDown />
         </Icon>
-        {surface.map((v) => (
+        {/* {surface.map((v) => (
           <p key={v} className={`col-${Math.floor(12 / surface.length)}`}>
             {v}
           </p>
-        ))}
+        ))} */}
+        <p className={`col-${Math.floor(12 / length)}`}>{surface.date}</p>
+        <p className={`col-${Math.floor(12 / length)}`}>{surface.paymentId}</p>
+        <p className={`col-${Math.floor(12 / length)}`}>
+          {surface.paymentTotalPrice}
+        </p>
+        {surface.orderStatus === 2 ? (
+          <div className={`col-${Math.floor(12 / length)}`}>
+            {createRepayButton()}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
 
       <StyleAccordionWrap
