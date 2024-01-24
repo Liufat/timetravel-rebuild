@@ -44,7 +44,7 @@ function Accordion({ surface, title, children }) {
       </div>
 
       <StyleAccordionWrap
-        className={`pb-3 ${show ? "border-bottom" : " fold"}`}
+        className={` ${show ? "border-bottom pb-3" : " fold"}`}
       >
         <StyleAccordionbody>
           <div className="d-flex justify-content-center py-3">
