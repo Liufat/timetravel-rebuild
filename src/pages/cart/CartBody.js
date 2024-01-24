@@ -4,7 +4,6 @@ import CartHotel from "./CartHotel";
 import CartFood from "./CartFood";
 import CartTicket from "./CartTicket";
 import CartInformCheck from "./CartInformCheck";
-import CartPay from "./CartPay";
 
 function CartBody({ className }) {
   const { cartPageState } = useCartPage();

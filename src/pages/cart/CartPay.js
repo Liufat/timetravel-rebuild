@@ -2,18 +2,7 @@ import React, { useState } from "react";
 import CartButton from "./CartButton";
 
 function CartPay() {
-  const [payMethod, setPayMethod] = useState("LinePay");
-
-  const onSubmit = async()=>{
-    // if (payMethod === 'LinePay') {
-    //   const payUrl = await Linepay(uuid);
-    //   window.location = payUrl;
-    // }
-
-    // if (payMethod === 'Credit') {
-    //   await EcPay(uuid);
-    // }
-  }
+  const [setPayMethod] = useState("LinePay");
 
   return (
     <>
