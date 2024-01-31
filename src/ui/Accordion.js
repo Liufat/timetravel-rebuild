@@ -1,16 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { GoTriangleDown } from "react-icons/go";
 import Button from "./Button";
-
-const Icon = styled.span`
-  position: absolute;
-  color: var(--color-black);
-  transform: rotate(180deg);
-  &.fold {
-    transform: rotate(0);
-  }
-`;
+import LittleTriangle from "./LittleTriangle";
 
 const StyleAccordionWrap = styled.div`
   display: grid;
@@ -39,9 +30,7 @@ function Accordion({ surface, title, children }) {
         className={`d-flex py-3 border-bottom position-relative `}
         onClick={() => setShow(!show)}
       >
-        <Icon className={`${show ? "" : "fold"}`}>
-          <GoTriangleDown />
-        </Icon>
+        <LittleTriangle show={show} />
         {/* {surface.map((v) => (
           <p key={v} className={`col-${Math.floor(12 / surface.length)}`}>
             {v}
