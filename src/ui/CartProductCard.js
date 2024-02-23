@@ -8,6 +8,7 @@ import TicketCount from "./TicketCount";
 import useAddDays from "../hooks/useAddDays";
 import useCountDay from "../hooks/useCountDay";
 import CommentStar from "./CommentStar";
+import Swal from "sweetalert2";
 
 function CartProductCard({ item, type }) {
   const countDay = useCountDay;
@@ -15,6 +16,40 @@ function CartProductCard({ item, type }) {
 
   const { startDate, endDate, quantity, image, productName, score } = item;
   const { quantityPlusOne, quantityMinusOne, editCart, removeCart } = useCart();
+
+  const handleRemoveCart = (item) => {
+    Swal.fire({
+      title: "確定要移除商品嗎？",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: " 確定，請幫我移出購物車",
+      confirmButtonColor: "#59d8a1",
+      cancelButtonText: "不，我再考慮一下",
+      cancelButtonColor: "#D9D9D9",
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: "success",
+          title: "商品已從購物車內移除",
+          confirmButtonText: "確認",
+          confirmButtonColor: "#59d8a1",
+        });
+        removeCart(item);
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire({
+          icon: "error",
+          title: "商品未移除",
+          confirmButtonText: "確認",
+          confirmButtonColor: "59d8a1",
+        });
+        return;
+      }
+    });
+  };
 
   const [dayCount, setDayCount] = useState(
     countDay(item.startDate, item.endDate)
@@ -167,7 +202,7 @@ function CartProductCard({ item, type }) {
           className="col-1 d-flex justify-content-end"
           style={{ backgroundColor: "transparent" }}
           onClick={() => {
-            removeCart(item);
+            handleRemoveCart(item);
           }}
         >
           <h2 className="d-flex">

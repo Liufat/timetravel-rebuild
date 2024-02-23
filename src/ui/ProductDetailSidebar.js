@@ -2,6 +2,8 @@ import React from "react";
 
 import Button from "./Button";
 
+import Swal from "sweetalert2";
+
 import { useCart } from "../context/CartContext";
 import { MY_HOST } from "../server/config";
 import TicketCount from "./TicketCount";
@@ -26,6 +28,12 @@ function ProductDetailSidebar({
   const { addCart } = useCart();
 
   const handleAddCart = () => {
+    Swal.fire({
+      icon: "success",
+      title: "已加入購物車！",
+      confirmButtonText: "確認",
+      confirmButtonColor: "#59d8a1",
+    });
     addCart({
       type,
       image: `${MY_HOST}/uploads/${type}/${image}`,

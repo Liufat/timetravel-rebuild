@@ -16,7 +16,6 @@ function OrdersRecent({ orders }) {
   const [sort, setSort] = useState(true);
   // true = asc
   // false = desc
-  console.log(type);
 
   // 切換filter的功能
   // 1.點擊標題時，改成指定的filter
