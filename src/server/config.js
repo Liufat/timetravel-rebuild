@@ -48,3 +48,9 @@ export const CHANGE_ECPAY_API = `${MY_HOST}/pay/api/ecpay-change-state`;
 //訂單
 export const GET_ORDERS = `${MY_HOST}/orders/api/list`;
 export const GET_ORDER_DETAIL = `${MY_HOST}/orders/api/list/orderdetail`;
+
+//輸入評論路徑
+export const SUBMIT_COMMENT_API = `${MY_HOST}/comment/api/submit-comment-api`;
+
+//修改訂單未評論/已評論狀態
+export const CHANGE_COMMENTED_API = `${MY_HOST}/comment/api/change-commented`;
