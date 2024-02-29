@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import Comment from "../comment/Comment";
+import React from "react";
 
 import Loading from "../../../ui/Loading";
 import moment from "moment";
-import Button from "../../../ui/Button";
 import Accordion from "../../../ui/Accordion";
 import { useOrderDetail } from "./useOrderDetail";
 import AccordionDetails from "../../../ui/AccordionDetails";
@@ -17,36 +15,14 @@ function OrderAccordion({ order }) {
   };
   const { orderDetail, isLoading } = useOrderDetail(order.uuid);
 
-  const [commentShow, setCommentShow] = useState(false);
-  const [commentDetail, setCommentDetail] = useState({});
-
   if (isLoading) {
     return <Loading />;
   }
   return (
     <Accordion key={order.uuid} surface={surface} title={title}>
       {orderDetail.map((v, i) => {
-        return (
-          <AccordionDetails
-            key={i}
-            value={v}
-            order={order}
-            setCommentDetail={setCommentDetail}
-            commentDetail={commentDetail}
-            setCommentShow={setCommentShow}
-          />
-        );
+        return <AccordionDetails key={i} value={v} order={order} />;
       })}
-      <Comment
-        show={commentShow}
-        onHide={() => setCommentShow(false)}
-        state="editing"
-        name={commentDetail.product_name}
-        productNumber={commentDetail.product_number}
-        uuid={order.uuid}
-        commentDetail={commentDetail}
-        setCommentDetail={setCommentDetail}
-      />
     </Accordion>
   );
 }

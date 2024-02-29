@@ -47,7 +47,6 @@ function Comment({
         confirmButtonColor: "#59d8a1",
       });
       setCommentDetail({ ...commentDetail, commented: 1 });
-      console.log(commentDetail);
     } else {
       Swal.fire({
         icon: "error",
